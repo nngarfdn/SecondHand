@@ -2,13 +2,14 @@ package com.binar.secondhand
 
 import android.app.Application
 import android.content.Context
+import com.binar.secondhand.di.repositoryModule
+import com.binar.secondhand.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
 class SecondHandApp: Application() {
-
 
     init {
         instance = this
@@ -27,11 +28,8 @@ class SecondHandApp: Application() {
             androidContext(this@SecondHandApp)
             modules(
                 listOf(
-//                    preferencesModule,
-//                    databaseModule,
-//                    networkModule,
-//                    repositoryModule,
-//                    viewModelModule
+                    repositoryModule,
+                    viewModelModule
                 )
             )
         }
