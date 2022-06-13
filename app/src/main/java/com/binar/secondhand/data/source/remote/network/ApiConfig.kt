@@ -32,7 +32,6 @@ object ApiConfig {
                         ).build()
                     chain.proceed(request)
                 })
-
                 addInterceptor(interceptor)
                 addInterceptor(
                     ChuckerInterceptor.Builder(SecondHandApp.getContext())
@@ -48,21 +47,12 @@ object ApiConfig {
     }
 
 
-    fun getApiService(isPrivate: Boolean): ApiService {
-        val loggingInterceptor = HttpLoggingInterceptor()
-            .setLevel(HttpLoggingInterceptor.Level.BODY)
-        val client = OkHttpClient.Builder()
-
-            .addInterceptor(loggingInterceptor)
-            .readTimeout(3, TimeUnit.MINUTES)
-            .writeTimeout(3, TimeUnit.MINUTES)
-            .build()
-        val retrofit by lazy {
+    fun getApiService(isPrivate: Boolean):ApiService{
+        val retrofit by lazy{
             Retrofit.Builder()
-                .client(okHttpClient(isPrivate))
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
+                .client(okHttpClient(isPrivate))
                 .build()
         }
         return retrofit.create(ApiService::class.java)

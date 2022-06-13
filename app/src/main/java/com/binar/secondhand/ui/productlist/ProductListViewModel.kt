@@ -18,4 +18,7 @@ class ProductListViewModel :ViewModel(){
     val movieDetail: MutableLiveData<Resource<Product>> = MutableLiveData()
 
     val gelAllProduct = repository.getListProduct()
+
+
+
 }
