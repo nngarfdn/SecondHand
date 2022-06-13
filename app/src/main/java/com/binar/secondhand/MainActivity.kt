@@ -5,15 +5,19 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.binar.secondhand.data.source.remote.network.Resource
+import com.binar.secondhand.databinding.ActivityMainBinding
 import com.binar.secondhand.ui.productlist.ProductListViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
     private val viewModel by viewModel<ProductListViewModel>()
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        setContentView(binding.root)
+        binding.btn.setOnClickListener {
+            throw RuntimeException("Test Crash") // Force a crash
+        }
         observeData()
 
     }

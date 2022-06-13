@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.binar.secondhand.di.repositoryModule
 import com.binar.secondhand.di.viewModelModule
+import com.google.firebase.FirebaseApp
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -23,6 +24,7 @@ class SecondHandApp: Application() {
     }
     override fun onCreate() {
         super.onCreate()
+        FirebaseApp.initializeApp(this)
         startKoin {
             androidLogger(Level.NONE)
             androidContext(this@SecondHandApp)

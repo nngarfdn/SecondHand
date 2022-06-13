@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.firebase.crashlytics'
 }
 
 def apikeyPropertiesFile = rootProject.file("local.properties")
@@ -8,6 +9,14 @@ def apikeyProperties = new Properties()
 apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('secondhand.jks')
+            storePassword 'secondhand'
+            keyAlias 'key0'
+            keyPassword 'secondhand'
+        }
+    }
     compileSdk 32
 
     defaultConfig {
@@ -15,6 +24,7 @@ android {
         minSdk 21
         targetSdk 32
         versionCode 1
+        ext.enableCrashlytics = true
         versionName "1.0"
         buildConfigField("String", "BASE_URL", apikeyProperties['BASE_URL'])
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -30,6 +40,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    buildFeatures {
+        viewBinding true
+    }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -70,5 +85,11 @@ dependencies {
     //chucker
     debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
     releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
+
+    //crashlytics
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.10'
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.0.0'
+
+
 
 }
