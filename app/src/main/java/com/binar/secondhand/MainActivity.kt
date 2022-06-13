@@ -1,5 +1,10 @@
 package com.binar.secondhand
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -15,9 +20,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        binding.btn.setOnClickListener {
-            throw RuntimeException("Test Crash") // Force a crash
-        }
+
         observeData()
 
     }
