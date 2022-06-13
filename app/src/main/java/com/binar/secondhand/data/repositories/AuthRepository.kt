@@ -8,6 +8,7 @@ import com.binar.secondhand.data.source.remote.network.Resource
 import com.binar.secondhand.data.source.remote.response.Product
 
 class AuthRepository {
-
-
+    fun test(){
+        //Test push ke github
+    }
 }
