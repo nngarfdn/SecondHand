@@ -22,7 +22,29 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         observeData()
+        observeDetailUser()
 
+    }
+
+    private fun observeDetailUser() {
+        viewModel.getDetailUser(65).observe(this) { response ->
+            when (response) {
+                is Resource.Loading -> Toast.makeText(this, "loading", Toast.LENGTH_SHORT).show()
+                is Resource.Success -> {
+                    Toast.makeText(
+                        this,
+                        "succes load user : ${response.data?.full_name} ",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    Log.d("activity_main", "${response.data} ")
+                }
+                is Resource.Error -> {
+                    Toast.makeText(this, "error ${response.message} ", Toast.LENGTH_SHORT).show()
+                    Log.d("err", "error ${response.message}")
+                }
+            }
+            Log.d("activity_main", "${response.data} ")
+        }
     }
 
     private fun observeData() {
