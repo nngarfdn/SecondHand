@@ -7,23 +7,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import com.binar.secondhand.R
 import com.binar.secondhand.data.source.remote.network.Resource
+import com.binar.secondhand.data.source.remote.response.ProductItem
 import com.binar.secondhand.databinding.FragmentProductListBinding
 import com.binar.secondhand.utils.loadImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.ArrayList
 
 class ProductListFragment : Fragment() {
 
     private var _binding: FragmentProductListBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModel<ProductListViewModel>()
+    private val productAdapter by lazy { ProductSellerAdapter() }
+    private var productList: ArrayList<ProductItem> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
+
         _binding = FragmentProductListBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -32,6 +39,19 @@ class ProductListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             actionBar.txtTitle.text = getString(R.string.daftar_jual_saya)
+
+            productList.add(ProductItem(id=0))
+            rvProduct.apply {
+                adapter = productAdapter
+                layoutManager = GridLayoutManager(context, 2)
+                val dividerItemDecoration =
+                    DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL)
+                ContextCompat.getDrawable(context, R.drawable.divider)?.let {
+                    dividerItemDecoration.setDrawable(it)
+                }
+                if (this.itemDecorationCount == 0)
+                    addItemDecoration(dividerItemDecoration)
+            }
 
         }
 
@@ -49,7 +69,6 @@ class ProductListFragment : Fragment() {
                         txtKota.text = response.data?.address
                         imgProfile.loadImage(response.data?.image_url)
                     }
-
                 }
                 is Resource.Error -> {
                     Toast.makeText(context, "error ${response.message} ", Toast.LENGTH_SHORT).show()
@@ -65,12 +84,8 @@ class ProductListFragment : Fragment() {
             when (response) {
                 is Resource.Loading -> Toast.makeText(context, "loading", Toast.LENGTH_SHORT).show()
                 is Resource.Success -> {
-                    Toast.makeText(
-                        context,
-                        "succes load ${response.data?.size} product",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    Log.d("activity_main", "${response.data} ")
+                    response.data?.let { productList.addAll(it) }
+                    productAdapter.submitData(productList)
                 }
                 is Resource.Error -> {
                     Toast.makeText(context, "error ${response.message} ", Toast.LENGTH_SHORT).show()
