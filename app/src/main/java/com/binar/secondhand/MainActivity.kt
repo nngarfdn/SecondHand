@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         observeData()
         observeDetailUser()
 
+        //test
+
     }
 
     private fun observeDetailUser() {
