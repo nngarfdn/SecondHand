@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_merch"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="@dimen/_200sdp"
+    android:layout_margin="@dimen/_4sdp"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@drawable/bg_item_add_product"
+    android:theme="@style/Theme.MaterialComponents.Light"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
 
     <include
         android:id="@+id/item_empty"
@@ -14,4 +22,4 @@
         android:visibility="visible"
         layout="@layout/item_product_seller"/>
 
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.secondhand.data.source.remote.response.ProductItem
 import com.binar.secondhand.databinding.ItemListProductStateBinding
+import com.binar.secondhand.utils.CurrencyIndonesia
 import com.binar.secondhand.utils.gone
 import com.binar.secondhand.utils.loadImage
 import com.binar.secondhand.utils.visible
@@ -44,6 +45,9 @@ class ProductSellerAdapter: RecyclerView.Adapter<ProductSellerAdapter.RecentAdap
                 itemProduct.root.visible()
                 itemEmpty.root.gone()
                 itemProduct.imgProduct.loadImage(data.image_url)
+                itemProduct.txtName.text = data.name
+                itemProduct.txtCategory.text = data.Categories[0].name
+                itemProduct.txtPrice.text = CurrencyIndonesia.rp(data.base_price.toString())
             }else {
                 itemProduct.root.gone()
                 itemEmpty.root.visible()
