@@ -9,7 +9,9 @@
         <entry key="app/src/main/res/drawable/bg_btn_outline_purple.xml" value="0.1795" />
         <entry key="app/src/main/res/drawable/bg_item_add_product.xml" value="0.1795" />
         <entry key="app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.1795" />
+        <entry key="app/src/main/res/drawable/ic_select_photo.xml" value="0.1795" />
         <entry key="app/src/main/res/layout/action_bar.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_complete_account.xml" value="0.27395833333333336" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_product_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_add_product.xml" value="0.25" />

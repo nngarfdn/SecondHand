@@ -16,8 +16,7 @@ interface ApiService {
 
     @PUT("auth/user/{id}")
     suspend fun editUser(@Path("id") id: Int,
-                         @PartMap map: HashMap<String, RequestBody>,
-                         @Part file: MultipartBody.Part): Response<GetProfileResponse>
+                         @Body file: RequestBody): Response<GetProfileResponse>
 
     //seller
     @GET("seller/product")

@@ -28,7 +28,7 @@ object ApiConfig {
                     val request = chain.request().newBuilder()
                         .addHeader(
                             "access_token",
-                            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5kb2VAbWFpbC5jb20iLCJpYXQiOjE2NTUwNTAyMjh9.7qa0dZ7WPFi9tE4L9LPlRprqLReQXju9VzYsw8elKlI"
+                            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlcjAxQGVtYWlsLmNvbSIsImlhdCI6MTY1NTYzMDIyMX0.2-OzROWKLGxc344tCy7xoW8Qer4foiuklWD4mmrBACE"
                         ).build()
                     chain.proceed(request)
                 })
