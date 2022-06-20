@@ -57,6 +57,4 @@ object ApiConfig {
         }
         return retrofit.create(ApiService::class.java)
     }
-
-
 }
