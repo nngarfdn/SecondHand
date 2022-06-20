@@ -44,9 +44,9 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnLogin.setOnClickListener {
-//            val email = "johndoe@mail.com"
-//            val password = "123456"
-            loginAuth()
+            val email = binding.etEmailLogin.text.toString()
+            val password = binding.etPasswordLogin.text.toString()
+            loginAuth(email, password)
         }
 
         binding.tvDaftar.setOnClickListener {
@@ -54,15 +54,15 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun loginAuth(){
-        viewModel.loginUser("johndoe@mail.com","123456").observe(requireActivity()){
+    private fun loginAuth(email: String, password: String){
+        viewModel.loginUser(email,password).observe(requireActivity()){
                 response ->
             when (response) {
                 is Resource.Loading -> Toast.makeText(activity, "loading", Toast.LENGTH_SHORT).show()
                 is Resource.Success -> {
                     Toast.makeText(activity, "Login success!", Toast.LENGTH_SHORT)
                         .show()
-                    findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+                    findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
                 }
                 is Resource.Error -> {
                     Toast.makeText(activity, "error ${response.message} ", Toast.LENGTH_SHORT).show()

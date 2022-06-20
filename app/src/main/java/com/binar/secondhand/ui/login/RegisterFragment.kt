@@ -47,8 +47,8 @@ class RegisterFragment : Fragment() {
 
     }
 
-    private fun registration(fullname:String,email:String, password:String){
-        viewModel.registerUser(fullname,email, password).observe(requireActivity()){
+    private fun registration(namaLengkap:String , email:String , password: String){
+        viewModel.registerUser(namaLengkap, email, password).observe(requireActivity()){
                 response ->
             when (response) {
                 is Resource.Loading -> Toast.makeText(activity, "loading", Toast.LENGTH_SHORT).show()

@@ -47,7 +47,8 @@ class AuthRepository {
 
     fun registerUser(fullname: String,email:String, password:String): LiveData<Resource<RegisterResponse>> = liveData {
         emit(Resource.Loading())
-        val registerUser = RegisterUser(0,fullname,email,password,"",+62,"")
+//        val registerUser = RegisterUser(fullname,email,password,12345678,"Jl. merdeka","","Jakarta")
+        val registerUser = RegisterUser(fullname,email,password)
         try {
             ApiConfig.getApiService(false).registerUser(registerUser).let { response->
                 if(response.isSuccessful){
