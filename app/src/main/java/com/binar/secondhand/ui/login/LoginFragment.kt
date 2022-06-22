@@ -1,5 +1,7 @@
 package com.binar.secondhand.ui.login
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
@@ -9,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.binar.secondhand.R
 import com.binar.secondhand.data.source.remote.network.ApiConfig
@@ -42,33 +45,37 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val sharedPreferences : SharedPreferences = requireActivity().getSharedPreferences("SP_INFO", Context.MODE_PRIVATE)
+        val loginStatus = sharedPreferences .getInt("login",0)
+        if (loginStatus == 1){
+            view.findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
+        }
 
         binding.btnLogin.setOnClickListener {
             val email = binding.etEmailLogin.text.toString()
             val password = binding.etPasswordLogin.text.toString()
-            loginAuth(email, password)
+            viewModel.loginUser(email,password).observe(requireActivity()){
+                    response ->
+                when (response) {
+                    is Resource.Loading -> Toast.makeText(activity, "loading", Toast.LENGTH_SHORT).show()
+                    is Resource.Success -> {
+                        Toast.makeText(activity, "Login success!", Toast.LENGTH_SHORT)
+                            .show()
+                        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+                        editor.putInt("login", 1)
+                        editor.apply()
+                        findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
+                    }
+                    is Resource.Error -> {
+                        Toast.makeText(activity, "error ${response.message} ", Toast.LENGTH_SHORT).show()
+                        Log.d("err", "error ${response.message}")
+                    }
+                }
+            }
         }
 
         binding.tvDaftar.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
-        }
-    }
-
-    private fun loginAuth(email: String, password: String){
-        viewModel.loginUser(email,password).observe(requireActivity()){
-                response ->
-            when (response) {
-                is Resource.Loading -> Toast.makeText(activity, "loading", Toast.LENGTH_SHORT).show()
-                is Resource.Success -> {
-                    Toast.makeText(activity, "Login success!", Toast.LENGTH_SHORT)
-                        .show()
-                    findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
-                }
-                is Resource.Error -> {
-                    Toast.makeText(activity, "error ${response.message} ", Toast.LENGTH_SHORT).show()
-                    Log.d("err", "error ${response.message}")
-                }
-            }
         }
     }
 }
