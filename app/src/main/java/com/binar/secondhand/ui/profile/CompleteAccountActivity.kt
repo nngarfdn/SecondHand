@@ -81,39 +81,8 @@ class CompleteAccountActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         binding.apply {
-            imgProfile.setOnClickListener { openGallery() }
-            btnSave.setOnClickListener {
-                viewModel.completeAccount(
-                    184, EditProfileRequest(
-                        "Nanang Arifudin", "tester01@email.com", "123456", 0, "Bantul",
-                        realPath
-                    )
-                ).observe(this@CompleteAccountActivity){ response ->
-                    when (response) {
-                        is Resource.Loading -> Toast.makeText(
-                            this@CompleteAccountActivity,
-                            "loading",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        is Resource.Success -> {
-                            Toast.makeText(
-                                this@CompleteAccountActivity,
-                                "success",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                        is Resource.Error -> {
-                            Toast.makeText(
-                                this@CompleteAccountActivity,
-                                "error ${response.message} ",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            Log.d("err", "error ${response.message}")
-                        }
-                    }
-                }
-            }
-
+            imgProfile.setOnClickListener { checkingPermissions()
+                openGallery()}
         }
     }
 
@@ -173,8 +142,14 @@ class CompleteAccountActivity : AppCompatActivity() {
 
     private fun openGallery() {
         val intent = Intent()
-        intent.action = Intent.ACTION_GET_CONTENT
+        intent.action = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Intent.ACTION_OPEN_DOCUMENT
+        } else {
+            Intent.ACTION_PICK
+        }
         intent.type = "image/*"
+        intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION)
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         val chooser = Intent.createChooser(intent, "Choose a Picture")
         launcherIntentGallery.launch(chooser)
     }
@@ -220,6 +195,49 @@ class CompleteAccountActivity : AppCompatActivity() {
         else
             realPath = RealPathUtil.getRealPathFromURI_API19(this, result.data?.data).toString();
         binding.imgProfile.setImageURI(result.data?.data)
+        binding.apply {
+            btnSave.setOnClickListener {
+            val name = edtName.text.toString()
+            val city = edtCity.text.toString()
+            val address = edtAddress.text.toString()
+            val tlp = edtTlp.text.toString()
+            if (name.isNotEmpty() && city.isNotEmpty() && address.isNotEmpty() && tlp.isNotEmpty()){
+                viewModel.completeAccount(
+                    184, EditProfileRequest(
+                        name, "tester01@email.com", "123456", 0, "Bantul",
+                        RealPathUtil.getRealPathFromURI(this@CompleteAccountActivity, result.data?.data!!)
+                            .toString()
+                    )
+                ).observe(this@CompleteAccountActivity){ response ->
+                    when (response) {
+                        is Resource.Loading -> Toast.makeText(
+                            this@CompleteAccountActivity,
+                            "loading",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        is Resource.Success -> {
+                            Toast.makeText(
+                                this@CompleteAccountActivity,
+                                "success",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        is Resource.Error -> {
+                            Toast.makeText(
+                                this@CompleteAccountActivity,
+                                "error ${response.message} ",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            Log.d("err", "error ${response.message}")
+                        }
+                    }
+                }
+            } else {
+                Toast.makeText(this@CompleteAccountActivity, "Lengkapi semua data", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        }
     }
 
 

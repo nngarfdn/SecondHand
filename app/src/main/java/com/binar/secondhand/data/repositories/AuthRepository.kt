@@ -63,7 +63,6 @@ class AuthRepository {
                 .addFormDataPart("phone_number", request.phone_number.toString())
                 .addFormDataPart("address", request.address)
                 .addPart(multipartBody)
-
                 .build()
             ApiConfig.getApiService(true).editUser(id,requestBody).let { response ->
                 if (response.isSuccessful) {
