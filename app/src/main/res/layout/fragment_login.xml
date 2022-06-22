@@ -56,32 +56,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutLogin"
+    <EditText
+        android:id="@+id/etPasswordLogin"
+        android:layout_width="328dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="276dp"
+        android:background="@drawable/rounded_edit_text"
+        android:hint=" Masukkan Password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="274dp"
-        android:layout_marginEnd="1dp"
-        android:background="@drawable/rounded_edit_text"
-        app:passwordToggleEnabled="true"
+        android:layout_marginTop="12dp"
+        android:background="@color/white"
+        android:src="@drawable/show_password"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.855"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-        <EditText
-            android:id="@+id/etPasswordLogin"
-            android:layout_width="328dp"
-            android:layout_height="48dp"
-            android:background="@drawable/rounded_edit_text"
-            android:hint=" Masukkan Password"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toTopOf="@+id/etPasswordLogin" />
 
     <Button
         android:id="@+id/btnLogin"
@@ -93,7 +90,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/etPasswordLogin" />
 
     <TextView
         android:id="@+id/textView"
