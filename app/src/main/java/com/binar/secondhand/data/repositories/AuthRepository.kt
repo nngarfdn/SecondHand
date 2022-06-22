@@ -81,7 +81,7 @@ class AuthRepository {
                 request.phone_number.toString().toRequestBody(Constant.MEDIA_TYPE_TEXT)
             map["address"] = request.address.toRequestBody(Constant.MEDIA_TYPE_TEXT)
 
-            val file = File(request.image)
+            val file = request.image
 
             val multipartBody = MultipartBody.Part.createFormData(
                 "image",
@@ -96,9 +96,10 @@ class AuthRepository {
                 .addFormDataPart("password", request.password)
                 .addFormDataPart("phone_number", request.phone_number.toString())
                 .addFormDataPart("address", request.address)
+                .addFormDataPart("city", "bantul")
                 .addPart(multipartBody)
                 .build()
-            ApiConfig.getApiService(true).editUser(id,requestBody).let { response ->
+            ApiConfig.getApiService(true).editUser(requestBody).let { response ->
                 if (response.isSuccessful) {
                     val body = response.body()
                     emit(Resource.Success(body!!))

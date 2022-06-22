@@ -3,6 +3,7 @@ package com.binar.secondhand
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.binar.secondhand.data.source.remote.network.Resource
 import com.binar.secondhand.databinding.ActivityMainBinding
 import com.binar.secondhand.ui.productlist.ProductListViewModel
+import com.binar.secondhand.ui.profile.CompleteAccountActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -21,8 +23,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        observeData()
-        observeDetailUser()
+//        observeData()
+//        observeDetailUser()
+
+        startActivity(Intent(this, CompleteAccountActivity::class.java))
 
     }
 

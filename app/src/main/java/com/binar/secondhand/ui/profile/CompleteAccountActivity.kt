@@ -2,6 +2,8 @@ package com.binar.secondhand.ui.profile
 
 import android.Manifest
 import android.app.Activity
+import android.content.ContentResolver
+import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION
 import android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
@@ -10,6 +12,7 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.os.PersistableBundle
 import android.provider.Settings
 import android.util.Log
@@ -25,6 +28,12 @@ import com.binar.secondhand.ui.productlist.ProductListViewModel
 import com.binar.secondhand.utils.RealPathUtil
 import com.binar.secondhand.utils.loadImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
+import java.io.OutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CompleteAccountActivity : AppCompatActivity() {
     private val binding by lazy { ActivityCompleteAccountBinding.inflate(layoutInflater) }
@@ -202,42 +211,73 @@ class CompleteAccountActivity : AppCompatActivity() {
             val address = edtAddress.text.toString()
             val tlp = edtTlp.text.toString()
             if (name.isNotEmpty() && city.isNotEmpty() && address.isNotEmpty() && tlp.isNotEmpty()){
-                viewModel.completeAccount(
-                    184, EditProfileRequest(
-                        name, "tester01@email.com", "123456", 0, "Bantul",
-                        RealPathUtil.getRealPathFromURI(this@CompleteAccountActivity, result.data?.data!!)
-                            .toString()
-                    )
-                ).observe(this@CompleteAccountActivity){ response ->
-                    when (response) {
-                        is Resource.Loading -> Toast.makeText(
-                            this@CompleteAccountActivity,
-                            "loading",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        is Resource.Success -> {
-                            Toast.makeText(
-                                this@CompleteAccountActivity,
-                                "success",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                        is Resource.Error -> {
-                            Toast.makeText(
-                                this@CompleteAccountActivity,
-                                "error ${response.message} ",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            Log.d("err", "error ${response.message}")
+                result.data?.data?.let { it1 -> uriToFile(it1, this@CompleteAccountActivity) }
+                    ?.let { it2 ->
+                        EditProfileRequest(
+                            name, "tester01@email.com", "123456", 0, "Bantul",
+                            it2
+                        )
+                    }?.let { it3 ->
+                        viewModel.completeAccount(
+                            184,
+                            it3
+                        ).observe(this@CompleteAccountActivity){ response ->
+                            when (response) {
+                                is Resource.Loading -> Toast.makeText(
+                                    this@CompleteAccountActivity,
+                                    "loading",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                is Resource.Success -> {
+                                    Toast.makeText(
+                                        this@CompleteAccountActivity,
+                                        "success",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                                is Resource.Error -> {
+                                    Toast.makeText(
+                                        this@CompleteAccountActivity,
+                                        "error ${response.message} ",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    Log.d("err", "error ${response.message}")
+                                }
+                            }
                         }
                     }
-                }
             } else {
                 Toast.makeText(this@CompleteAccountActivity, "Lengkapi semua data", Toast.LENGTH_SHORT).show()
             }
         }
 
         }
+    }
+
+
+    fun uriToFile(selectedImg: Uri, context: Context): File {
+        val contentResolver: ContentResolver = context.contentResolver
+        val myFile = createTempFile(context)
+
+        val inputStream = contentResolver.openInputStream(selectedImg) as InputStream
+        val outputStream: OutputStream = FileOutputStream(myFile)
+        val buf = ByteArray(1024)
+        var len: Int
+        while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
+        outputStream.close()
+        inputStream.close()
+
+        return myFile
+    }
+
+    fun createTempFile(context: Context): File {
+        val FILENAME_FORMAT = "dd-MMM-yyyy"
+        val timeStamp: String = SimpleDateFormat(
+            FILENAME_FORMAT,
+            Locale.US
+        ).format(System.currentTimeMillis())
+        val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        return File.createTempFile(timeStamp, ".jpg", storageDir)
     }
 
 

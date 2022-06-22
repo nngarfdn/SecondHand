@@ -18,9 +18,8 @@ interface ApiService {
     @POST("auth/register")
     suspend fun registerUser(@Body registerUser: RegisterUser): Response<RegisterResponse>
 
-    @PUT("auth/user/{id}")
-    suspend fun editUser(@Path("id") id: Int,
-                         @Body file: RequestBody
+    @PUT("auth/user")
+    suspend fun editUser(@Body file: RequestBody
     ): Response<GetProfileResponse>
 
 
