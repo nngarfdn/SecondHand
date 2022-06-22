@@ -6,7 +6,6 @@ import com.binar.secondhand.data.source.remote.request.EditProfileRequest
 
 class ProfileViewModel(private val authRepository: AuthRepository): ViewModel() {
 
-    fun getDetailUser(id: Int)  = authRepository.getDetailUser(id)
     fun completeAccount(id: Int, request: EditProfileRequest) = authRepository.editUser(id, request)
 
 }
