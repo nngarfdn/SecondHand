@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.binar.secondhand.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_jual"
+        android:name="com.binar.secondhand.ui.jual.JualFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_jual" />
+
+    <fragment
+        android:id="@+id/navigation_notif"
+        android:name="com.binar.secondhand.ui.notifications.NotifFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_list"
+        android:name="com.binar.secondhand.ui.productlist.ProductListFragment"
+        android:label="@string/daftar_jual"
+        tools:layout="@layout/fragment_product_list">
+        <action
+            android:id="@+id/action_navigation_list_to_blankFragment"
+            app:destination="@id/blankFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_akun"
+        android:name="com.binar.secondhand.ui.akun.AkunFragment"
+        android:label="@string/akun"
+        tools:layout="@layout/fragment_akun" />
+
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="com.binar.secondhand.ui.detail.DetailFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_detail" />
+
+</navigation>
