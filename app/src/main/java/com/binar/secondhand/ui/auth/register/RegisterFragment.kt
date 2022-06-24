@@ -1,4 +1,4 @@
-package com.binar.secondhand.ui.login
+package com.binar.secondhand.ui.auth.register
 
 import android.os.Bundle
 import android.util.Log
@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.binar.secondhand.R
 import com.binar.secondhand.data.source.remote.network.Resource
@@ -37,7 +36,6 @@ class RegisterFragment : Fragment() {
             val email = binding.etEmailRegister.text.toString()
             val password = binding.etPasswordRegister.text.toString()
             registration(namaLengkap, email, password)
-
         }
 
         binding.tvMasuk.setOnClickListener {

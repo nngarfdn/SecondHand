@@ -22,7 +22,7 @@ class AuthRepository {
     fun getDetailUser(id: Int): LiveData<Resource<GetProfileResponse>> = liveData {
         emit(Resource.Loading())
         try {
-            ApiConfig.getApiService(true).getDetailUser(id).let { response->
+            ApiConfig.getApiService(true).getDetailUser().let { response->
                 if(response.isSuccessful){
                     val body = response.body()
                     emit(Resource.Success(body!!))

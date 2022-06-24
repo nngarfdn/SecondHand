@@ -1,4 +1,4 @@
-package com.binar.secondhand.ui.login
+package com.binar.secondhand.ui.auth.login
 
 import androidx.lifecycle.ViewModel
 import com.binar.secondhand.data.repositories.AuthRepository

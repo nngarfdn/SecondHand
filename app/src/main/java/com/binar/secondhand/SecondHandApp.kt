@@ -2,6 +2,7 @@ package com.binar.secondhand
 
 import android.app.Application
 import android.content.Context
+import android.content.SharedPreferences
 import com.binar.secondhand.di.repositoryModule
 import com.binar.secondhand.di.viewModelModule
 import com.google.firebase.FirebaseApp
@@ -21,6 +22,11 @@ class SecondHandApp: Application() {
         fun getContext(): Context {
             return instance.applicationContext
         }
+
+        fun getSharedPreferences(): SharedPreferences = instance.getSharedPreferences(
+            "SECONDHAND_PREF",
+            Context.MODE_PRIVATE
+        )
     }
     override fun onCreate() {
         super.onCreate()

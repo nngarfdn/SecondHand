@@ -25,7 +25,7 @@ android {
         targetSdk 32
         versionCode 1
         ext.enableCrashlytics = true
-        versionName "1.0"
+        versionName "0.001"
         buildConfigField("String", "BASE_URL", apikeyProperties['BASE_URL'])
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -102,7 +102,5 @@ dependencies {
 
     compileOnly 'androidx.viewpager2:viewpager2:1.0.0'
     implementation 'me.relex:circleindicator:2.1.6'
-
-
 
 }

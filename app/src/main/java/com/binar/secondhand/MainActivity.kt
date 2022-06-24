@@ -20,19 +20,19 @@ import com.binar.secondhand.ui.profile.CompleteAccountActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
-    private val viewModel by viewModel<ProductListViewModel>()
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 //        startActivity(Intent(this, CompleteAccountActivity::class.java))
-
         setupNav()
     }
 
     private fun setupNav() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostActivity) as NavHostFragment
         val navController = navHostFragment.navController
+
+
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {

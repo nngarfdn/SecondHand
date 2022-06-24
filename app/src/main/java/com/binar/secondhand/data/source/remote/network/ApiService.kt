@@ -9,8 +9,8 @@ interface ApiService {
 
 
     //auth
-    @GET("auth/user/{id}")
-    suspend fun getDetailUser(@Path("id") id: Int): Response<GetProfileResponse>
+    @GET("auth/user/")
+    suspend fun getDetailUser(): Response<GetProfileResponse>
 
     @POST("auth/login")
     suspend fun loginUser(@Body loginInfo: LoginUser): Response<LoginResponse>

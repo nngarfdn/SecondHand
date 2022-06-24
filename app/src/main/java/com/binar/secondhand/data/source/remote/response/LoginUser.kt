@@ -6,9 +6,14 @@ data class LoginUser (
     @SerializedName("email")
     val email: String,
     @SerializedName("password")
-    val password: String
+    val password: String,
+
 )
 
 data class LoginResponse(
-    val data : List<LoginUser>
+    val access_token: String="",
+    val name: String= "",
+    val email: String="",
+    val id: String="",
+//    val data : List<LoginUser>
 )

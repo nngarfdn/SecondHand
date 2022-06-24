@@ -2,6 +2,7 @@ package com.binar.secondhand.data.source.remote.network
 
 import com.binar.secondhand.BuildConfig.BASE_URL
 import com.binar.secondhand.SecondHandApp
+import com.binar.secondhand.utils.Constant
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.google.gson.GsonBuilder
@@ -25,12 +26,15 @@ object ApiConfig {
             .apply {
 
                 if (isPrivate) addInterceptor(Interceptor { chain ->
-                    val request = chain.request().newBuilder()
-                        .addHeader(
-                            "access_token",
-                            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlcjAxQGVtYWlsLmNvbSIsImlhdCI6MTY1NTg3MzU1MH0.nLB38NhzcBHsshkxi77bXHr_dKPONrHbVldUF-bqq8E"
-                        ).build()
-                    chain.proceed(request)
+                    val request =
+                        SecondHandApp.getSharedPreferences().getString(Constant.TOKEN,"")?.let {
+                            chain.request().newBuilder()
+                                .addHeader(
+                                    "access_token",
+                                    it
+                                ).build()
+                        }
+                    request?.let { chain.proceed(it) }!!
                 })
                 addInterceptor(interceptor)
                 addInterceptor(

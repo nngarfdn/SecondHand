@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import com.binar.secondhand.R
+import com.binar.secondhand.callback.ProductListCallback
 import com.binar.secondhand.data.source.remote.network.Resource
 import com.binar.secondhand.data.source.remote.response.ProductItem
 import com.binar.secondhand.databinding.FragmentProductListBinding
@@ -18,12 +20,12 @@ import com.binar.secondhand.utils.loadImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.ArrayList
 
-class ProductListFragment : Fragment() {
+class ProductListFragment : Fragment(), ProductListCallback {
 
     private var _binding: FragmentProductListBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModel<ProductListViewModel>()
-    private val productAdapter by lazy { ProductSellerAdapter() }
+    private val productAdapter by lazy { ProductSellerAdapter(this@ProductListFragment) }
     private var productList: ArrayList<ProductItem> = arrayListOf()
 
     override fun onCreateView(
@@ -99,6 +101,12 @@ class ProductListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onClicked(item: ProductItem) {
+        val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.navHostActivity) as NavHostFragment
+        val navController = navHostFragment.navController
+        navController.navigate(R.id.action_navigation_list_to_blankFragment)
     }
 
 

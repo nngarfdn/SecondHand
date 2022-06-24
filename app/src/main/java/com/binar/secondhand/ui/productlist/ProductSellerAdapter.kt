@@ -2,9 +2,13 @@ package com.binar.secondhand.ui.productlist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.binar.secondhand.R
+import com.binar.secondhand.SecondHandApp
+import com.binar.secondhand.callback.ProductListCallback
 import com.binar.secondhand.data.source.remote.response.ProductItem
 import com.binar.secondhand.databinding.ItemListProductStateBinding
 import com.binar.secondhand.utils.CurrencyIndonesia
@@ -13,7 +17,7 @@ import com.binar.secondhand.utils.loadImage
 import com.binar.secondhand.utils.visible
 
 
-class ProductSellerAdapter: RecyclerView.Adapter<ProductSellerAdapter.RecentAdapterViewHolder>() {
+class ProductSellerAdapter(val listener: ProductListCallback): RecyclerView.Adapter<ProductSellerAdapter.RecentAdapterViewHolder>() {
     inner class RecentAdapterViewHolder(val view: ItemListProductStateBinding) :
         RecyclerView.ViewHolder(view.root)
 
@@ -46,8 +50,11 @@ class ProductSellerAdapter: RecyclerView.Adapter<ProductSellerAdapter.RecentAdap
                 itemEmpty.root.gone()
                 itemProduct.imgProduct.loadImage(data.image_url)
                 itemProduct.txtName.text = data.name
-                itemProduct.txtCategory.text = data.Categories[0].name
+                itemProduct.txtCategory.text = "Coming soon"
                 itemProduct.txtPrice.text = CurrencyIndonesia.rp(data.base_price.toString())
+                itemProduct.root.setOnClickListener {
+                    listener.onClicked(data)
+                }
             }else {
                 itemProduct.root.gone()
                 itemEmpty.root.visible()
