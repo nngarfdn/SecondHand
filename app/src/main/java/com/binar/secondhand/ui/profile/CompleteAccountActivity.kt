@@ -22,8 +22,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import com.binar.secondhand.R
 import com.binar.secondhand.data.source.remote.network.Resource
+import com.binar.secondhand.data.source.remote.request.AddProductRequest
 import com.binar.secondhand.data.source.remote.request.EditProfileRequest
 import com.binar.secondhand.databinding.ActivityCompleteAccountBinding
+import com.binar.secondhand.ui.addproduct.AddProductActivity
 import com.binar.secondhand.ui.productlist.ProductListViewModel
 import com.binar.secondhand.utils.RealPathUtil
 import com.binar.secondhand.utils.loadImage
@@ -45,7 +47,6 @@ class CompleteAccountActivity : AppCompatActivity() {
 
     private val galleryResult =
         registerForActivityResult(ActivityResultContracts.GetContent()) { result ->
-
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 try {
                     grantUriPermission(
@@ -90,6 +91,7 @@ class CompleteAccountActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         binding.apply {
+            actionBar.txtTitle.text = "Lengkapi Info Akun"
             imgProfile.setOnClickListener { checkingPermissions()
                 openGallery()}
         }
@@ -206,6 +208,33 @@ class CompleteAccountActivity : AppCompatActivity() {
         binding.imgProfile.setImageURI(result.data?.data)
         binding.apply {
             btnSave.setOnClickListener {
+
+//                viewModel.addProduct(AddProductRequest("Mouse","gaming gan","1000000", arrayListOf(3,2), "Bantul", uriToFile(
+//                    result.data?.data!!,this@CompleteAccountActivity))).observe(this@CompleteAccountActivity) { response ->
+//
+//                    when (response) {
+//                        is Resource.Loading -> Toast.makeText(
+//                            this@CompleteAccountActivity,
+//                            "loading",
+//                            Toast.LENGTH_SHORT
+//                        ).show()
+//                        is Resource.Success -> {
+//                            Toast.makeText(
+//                                this@CompleteAccountActivity,
+//                                "success tambah data",
+//                                Toast.LENGTH_SHORT
+//                            ).show()
+//                        }
+//                        is Resource.Error -> {
+//                            Toast.makeText(
+//                                this@CompleteAccountActivity,
+//                                "error tambah ${response.message} ",
+//                                Toast.LENGTH_SHORT
+//                            ).show()
+//                            Log.d("err", "error ${response.message}")
+//                        }
+//                    }
+//                }
             val name = edtName.text.toString()
             val city = edtCity.text.toString()
             val address = edtAddress.text.toString()
@@ -234,6 +263,7 @@ class CompleteAccountActivity : AppCompatActivity() {
                                         "success",
                                         Toast.LENGTH_SHORT
                                     ).show()
+                                    startActivity(Intent(this@CompleteAccountActivity, AddProductActivity::class.java))
                                 }
                                 is Resource.Error -> {
                                     Toast.makeText(
@@ -266,7 +296,6 @@ class CompleteAccountActivity : AppCompatActivity() {
         while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
         outputStream.close()
         inputStream.close()
-
         return myFile
     }
 

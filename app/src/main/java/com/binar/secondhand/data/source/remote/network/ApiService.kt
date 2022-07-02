@@ -1,5 +1,6 @@
 package com.binar.secondhand.data.source.remote.network
 
+import com.binar.secondhand.data.source.remote.request.AddProductRequest
 import com.binar.secondhand.data.source.remote.response.*
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -23,9 +24,18 @@ interface ApiService {
     ): Response<GetProfileResponse>
 
 
-    //seller
+    //seller - product
     @GET("seller/product")
     suspend fun getProducts(): Response<Product>
+
+    @POST("seller/product")
+    suspend fun addProduct(@Body request: RequestBody): Response<AddProductResponse>
+
+    @GET("/seller/product/{id}")
+    suspend fun getProductById(@Path("id") id: String): Response<ProductItem>
+
+    //seller - order
+
 
 
 }

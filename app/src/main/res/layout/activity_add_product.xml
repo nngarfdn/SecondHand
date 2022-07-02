@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.addproduct.AddProductActivity">
+
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_bar_normal"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Produk"
+                style="@style/TextView.Body.Normal"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"/>
+
+            <EditText
+                android:id="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:hint="Sepatu"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:background="@drawable/bg_edittext"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Harga Produk"
+                style="@style/TextView.Body.Normal"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"/>
+
+            <EditText
+                android:id="@+id/edt_price"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:hint="Rp 1000.000"
+                android:inputType="phone"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:background="@drawable/bg_edittext"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kategori"
+                style="@style/TextView.Body.Normal"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"/>
+
+            <EditText
+                android:id="@+id/edt_category"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:hint="Rp 1000.000"
+                android:inputType="phone"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:background="@drawable/bg_edittext"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deskripsi"
+                style="@style/TextView.Body.Normal"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"/>
+
+            <EditText
+                android:id="@+id/edt_description"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_70sdp"
+                android:hint="Jalan ikan hiu km 13"
+                android:inputType="textMultiLine"
+                android:gravity="top"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:background="@drawable/bg_edittext"/>
+            <ImageView
+                android:id="@+id/img_profile"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:src="@drawable/ic_select_photo"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_preview"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/_50sdp"
+                    android:textColor="@color/primary_purple"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginHorizontal="@dimen/_16sdp"
+                    android:text="Preview"/>
+                <Button
+                    android:id="@+id/btn_save"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginHorizontal="@dimen/_16sdp"
+                    android:text="Simpan"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
