@@ -6,6 +6,7 @@ import com.binar.secondhand.data.source.remote.network.ApiConfig
 import com.binar.secondhand.data.source.remote.network.Resource
 import com.binar.secondhand.data.source.remote.request.AddProductRequest
 import com.binar.secondhand.data.source.remote.response.AddProductResponse
+import com.binar.secondhand.data.source.remote.response.GetAllCategoryResponseItem
 import com.binar.secondhand.data.source.remote.response.ProductItem
 import com.binar.secondhand.utils.Constant
 import okhttp3.MultipartBody
@@ -88,6 +89,24 @@ class SellerRepository {
             emit(Resource.Error(e.message ?: "Terjadi Kesalahan"))
         }
     }
+
+    fun getListCategory(): LiveData<Resource<List<GetAllCategoryResponseItem>>> = liveData {
+        emit(Resource.Loading())
+        try {
+            ApiConfig.getApiService(false).getAllCategory().let { response->
+                if(response.isSuccessful){
+                    val body = response.body()
+                    emit(Resource.Success(body!!))
+                }else {
+                    emit(Resource.Error(response.errorBody().toString()))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Resource.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
+
+
 
 
 

@@ -34,8 +34,18 @@ interface ApiService {
     @GET("/seller/product/{id}")
     suspend fun getProductById(@Path("id") id: String): Response<ProductItem>
 
-    //seller - order
+    //seller - category
+    @GET("seller/category")
+    suspend fun getAllCategory(): Response<GetAllCategoryResponse>
 
+    //buyer
+    @GET("buyer/product")
+    suspend fun getProductsBuyer(): Response<Product>
+
+    @GET("buyer/product/{id}")
+    suspend fun getProductsDetail(
+        @Path("id") id:Int
+    ): Response<ProductItem>
 
 
 }

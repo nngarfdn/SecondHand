@@ -29,6 +29,7 @@ import com.binar.secondhand.ui.addproduct.AddProductActivity
 import com.binar.secondhand.ui.productlist.ProductListViewModel
 import com.binar.secondhand.utils.RealPathUtil
 import com.binar.secondhand.utils.loadImage
+import com.binar.secondhand.utils.uriToFile
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 import java.io.FileOutputStream
@@ -43,49 +44,6 @@ class CompleteAccountActivity : AppCompatActivity() {
     private var imageUri: Uri? = null
     private var realPath = ""
     private val REQUEST_CODE_PERMISSION = 100
-    var selectedImg: Uri? = null
-
-    private val galleryResult =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { result ->
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                try {
-                    grantUriPermission(
-                        packageName,
-                        result,
-                        FLAG_GRANT_READ_URI_PERMISSION or FLAG_GRANT_PERSISTABLE_URI_PERMISSION
-                    )
-                } catch (e: IllegalArgumentException) {
-                    // on Kitkat api only 0x3 is allowed (FLAG_GRANT_READ_URI_PERMISSION | FLAG_GRANT_WRITE_URI_PERMISSION)
-                    grantUriPermission(
-                        packageName,
-                        result,
-                        FLAG_GRANT_READ_URI_PERMISSION
-                    )
-                } catch (e: SecurityException) {
-                    Log.e("", e.toString())
-                }
-                try {
-                    var takeFlags = intent.flags
-                    takeFlags =
-                        takeFlags and (FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
-                    result?.let { contentResolver.takePersistableUriPermission(it, takeFlags) }
-                } catch (e: SecurityException) {
-                    Log.e("", e.toString())
-                }
-            }
-            imageUri = result
-            if (Build.VERSION.SDK_INT < 11)
-                realPath = RealPathUtil.getRealPathFromURI_BelowAPI11(this, result).toString();
-
-            // SDK >= 11 && SDK < 19
-            else if (Build.VERSION.SDK_INT < 19)
-                realPath = RealPathUtil.getRealPathFromURI_API11to18(this, result).toString();
-
-            // SDK > 19 (Android 4.4)
-            else
-                realPath = RealPathUtil.getRealPathFromURI_API19(this, result).toString();
-            binding.imgProfile.setImageURI(result)
-        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -153,12 +111,14 @@ class CompleteAccountActivity : AppCompatActivity() {
 
     private fun openGallery() {
         val intent = Intent()
+        val mimeTypes = arrayOf("image/png", "image/jpg", "image/jpeg")
         intent.action = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Intent.ACTION_OPEN_DOCUMENT
         } else {
             Intent.ACTION_PICK
         }
-        intent.type = "image/*"
+        intent.type = "*/*";
+        intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
         intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION)
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         val chooser = Intent.createChooser(intent, "Choose a Picture")
@@ -209,32 +169,6 @@ class CompleteAccountActivity : AppCompatActivity() {
         binding.apply {
             btnSave.setOnClickListener {
 
-//                viewModel.addProduct(AddProductRequest("Mouse","gaming gan","1000000", arrayListOf(3,2), "Bantul", uriToFile(
-//                    result.data?.data!!,this@CompleteAccountActivity))).observe(this@CompleteAccountActivity) { response ->
-//
-//                    when (response) {
-//                        is Resource.Loading -> Toast.makeText(
-//                            this@CompleteAccountActivity,
-//                            "loading",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-//                        is Resource.Success -> {
-//                            Toast.makeText(
-//                                this@CompleteAccountActivity,
-//                                "success tambah data",
-//                                Toast.LENGTH_SHORT
-//                            ).show()
-//                        }
-//                        is Resource.Error -> {
-//                            Toast.makeText(
-//                                this@CompleteAccountActivity,
-//                                "error tambah ${response.message} ",
-//                                Toast.LENGTH_SHORT
-//                            ).show()
-//                            Log.d("err", "error ${response.message}")
-//                        }
-//                    }
-//                }
             val name = edtName.text.toString()
             val city = edtCity.text.toString()
             val address = edtAddress.text.toString()
@@ -285,29 +219,7 @@ class CompleteAccountActivity : AppCompatActivity() {
     }
 
 
-    fun uriToFile(selectedImg: Uri, context: Context): File {
-        val contentResolver: ContentResolver = context.contentResolver
-        val myFile = createTempFile(context)
 
-        val inputStream = contentResolver.openInputStream(selectedImg) as InputStream
-        val outputStream: OutputStream = FileOutputStream(myFile)
-        val buf = ByteArray(1024)
-        var len: Int
-        while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
-        outputStream.close()
-        inputStream.close()
-        return myFile
-    }
-
-    fun createTempFile(context: Context): File {
-        val FILENAME_FORMAT = "dd-MMM-yyyy"
-        val timeStamp: String = SimpleDateFormat(
-            FILENAME_FORMAT,
-            Locale.US
-        ).format(System.currentTimeMillis())
-        val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        return File.createTempFile(timeStamp, ".jpg", storageDir)
-    }
 
 
 }

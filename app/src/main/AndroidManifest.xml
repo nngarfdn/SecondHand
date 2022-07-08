@@ -25,12 +25,14 @@
         android:theme="@style/Theme.SecondHand"
         tools:targetApi="31">
         <activity
+            android:name=".SelectCategoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.addproduct.AddProductActivity"
             android:exported="true" />
         <activity
             android:name=".ui.auth.AuthActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ui.profile.CompleteAccountActivity"
             android:exported="true" />

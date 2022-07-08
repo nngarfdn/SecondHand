@@ -9,5 +9,14 @@
         android:id="@+id/itemFragment"
         android:name="com.binar.secondhand.ui.home.ItemFragment"
         android:label="fragment_list_home"
-        tools:layout="@layout/fragment_list_home" />
+        tools:layout="@layout/fragment_list_home" >
+        <action
+            android:id="@+id/action_itemFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.binar.secondhand.ui.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
 </navigation>

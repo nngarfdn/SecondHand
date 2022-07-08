@@ -20,7 +20,7 @@ import java.io.File
 
 class AuthRepository {
 
-    fun getDetailUser(id: Int): LiveData<Resource<GetProfileResponse>> = liveData {
+    fun getDetailUser(): LiveData<Resource<GetProfileResponse>> = liveData {
         emit(Resource.Loading())
         try {
             ApiConfig.getApiService(true).getDetailUser().let { response->
