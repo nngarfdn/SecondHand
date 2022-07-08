@@ -9,13 +9,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 
-class ImageDetailAdapter(private val List: List<Int>)
+class ImageDetailAdapter(private val List: List<String?>)
     : RecyclerView.Adapter<ImageDetailAdapter.ImageSlider>() {
 
     inner class ImageSlider( val binding: AdapterSliderBinding) : RecyclerView.ViewHolder(binding.root) {
         private var background = RequestOptions().placeholder(R.color.black)
 
-        fun masukan(list: Int) {
+        fun masukan(list: String?) {
             binding.apply {
                 Glide.with(binding.root.context)
                     .load(list)

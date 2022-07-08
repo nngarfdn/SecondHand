@@ -13,6 +13,6 @@ class ProductListViewModel(
     private val authRepository: AuthRepository) : ViewModel() {
 
     val gelAllProduct = sellerRepository.getListProduct()
-    fun getDetailUser(id: Int)  = authRepository.getDetailUser(id)
+    fun getDetailUser(id: Int)  = authRepository.getDetailUser()
 
 }

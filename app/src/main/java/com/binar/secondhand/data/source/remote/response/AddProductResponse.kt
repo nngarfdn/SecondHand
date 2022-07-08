@@ -1,10 +1,6 @@
 package com.binar.secondhand.data.source.remote.response
 
-
-class Product : ArrayList<ProductItem>()
-
-data class ProductItem(
-    var Categories: List<Categories> = listOf(),
+data class AddProductResponse(
     var base_price: Int = 0,
     var createdAt: String = "",
     var description: String = "",
@@ -16,9 +12,4 @@ data class ProductItem(
     var status: String = "",
     var updatedAt: String = "",
     var user_id: Int = 0
-)
-
-data class Categories(
-    var id: Double? = 0.0,
-    var name: String? = ""
 )

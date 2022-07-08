@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.binar.secondhand.SecondHandApp
 import com.binar.secondhand.databinding.FragmentJualBinding
+import com.binar.secondhand.ui.addproduct.AddProductActivity
 import com.binar.secondhand.ui.auth.AuthActivity
 import com.binar.secondhand.ui.profile.CompleteAccountActivity
 import com.binar.secondhand.utils.Constant
@@ -31,7 +32,8 @@ class JualFragment : Fragment() {
         if (isLoggedIn==0){
             startActivity(Intent(context, AuthActivity::class.java))
         }else{
-            startActivity(Intent(context,CompleteAccountActivity::class.java))
+            startActivity(Intent(context,AddProductActivity::class.java))
+//            startActivity(Intent(context,CompleteAccountActivity::class.java))
         }
         return binding.root
     }

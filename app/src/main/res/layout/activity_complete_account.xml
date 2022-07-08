@@ -29,6 +29,7 @@
         android:id="@+id/edt_name"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
+        android:paddingHorizontal="@dimen/_8sdp"
         android:layout_marginTop="@dimen/_4sdp"
         android:layout_marginHorizontal="@dimen/_16sdp"
         android:background="@drawable/bg_edittext"/>
@@ -45,6 +46,7 @@
         android:id="@+id/edt_city"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
+        android:paddingHorizontal="@dimen/_8sdp"
         android:layout_marginTop="@dimen/_4sdp"
         android:layout_marginHorizontal="@dimen/_16sdp"
         android:background="@drawable/bg_edittext"/>
@@ -60,6 +62,7 @@
     <EditText
         android:id="@+id/edt_address"
         android:layout_width="match_parent"
+        android:paddingHorizontal="@dimen/_8sdp"
         android:layout_height="@dimen/_45sdp"
         android:layout_marginTop="@dimen/_4sdp"
         android:layout_marginHorizontal="@dimen/_16sdp"
@@ -78,6 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
         android:layout_marginTop="@dimen/_4sdp"
+        android:paddingHorizontal="@dimen/_8sdp"
         android:layout_marginHorizontal="@dimen/_16sdp"
         android:background="@drawable/bg_edittext"/>
 
@@ -85,6 +89,7 @@
         android:id="@+id/btn_save"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
+        android:textColor="@color/white"
         android:layout_marginTop="@dimen/_16sdp"
         android:layout_marginHorizontal="@dimen/_16sdp"
         android:text="Simpan"/>
