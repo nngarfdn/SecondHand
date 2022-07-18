@@ -104,9 +104,9 @@ class ProductListFragment : Fragment(), ProductListCallback {
     }
 
     override fun onClicked(item: ProductItem) {
-        val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.navHostActivity) as NavHostFragment
-        val navController = navHostFragment.navController
-        navController.navigate(R.id.action_navigation_list_to_blankFragment)
+//        val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.navHostActivity) as NavHostFragment
+//        val navController = navHostFragment.navController
+//        navController.navigate(R.id.action_navigation_list_to_blankFragment)
     }
 
 

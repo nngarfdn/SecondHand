@@ -14,4 +14,132 @@
     <string name="jual">Jual</string>
     <string name="daftar_jual">Daftar Jual</string>
     <string name="akun">Akun</string>
+
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string-array name="city">
+        <item>Ambon</item>
+        <item>Balikpapan</item>
+        <item>Banda Aceh</item>
+        <item>Bandar Lampung</item>
+        <item>Bandung</item>
+        <item>Banjar</item>
+        <item>Banjarbaru</item>
+        <item>Banjarmasin</item>
+        <item>Batam</item>
+        <item>Batu</item>
+        <item>Baubau</item>
+        <item>Bekasi</item>
+        <item>Bengkulu</item>
+        <item>Bima</item>
+        <item>Binjai</item>
+        <item>Bitung</item>
+        <item>Blitar</item>
+        <item>Bogor</item>
+        <item>Bontang</item>
+        <item>Bukittinggi</item>
+        <item>Cilegon</item>
+        <item>Cimahi</item>
+        <item>Cirebon</item>
+        <item>Denpasar</item>
+        <item>Depok</item>
+        <item>Dumai</item>
+        <item>Gorontalo</item>
+        <item>Gunungsitoli</item>
+        <item>Jakarta Barat</item>
+        <item>Jakarta Pusat</item>
+        <item>Jakarta Selatan</item>
+        <item>Jakarta Timur</item>
+        <item>Jakarta Utara</item>
+        <item>Jambi</item>
+        <item>Jayapura</item>
+        <item>Kediri</item>
+        <item>Kendari</item>
+        <item>Kotamobagu</item>
+        <item>Kupang</item>
+        <item>Langsa</item>
+        <item>Lhokseumawe</item>
+        <item>Lubuklinggaut</item>
+        <item>Madiun</item>
+        <item>Magelang</item>
+        <item>Makassar</item>
+        <item>Malang</item>
+        <item>Manado</item>
+        <item>Mataram</item>
+        <item>Medan</item>
+        <item>Metro</item>
+        <item>Mojokerto</item>
+        <item>Padang</item>
+        <item>Padang Panjang</item>
+        <item>PAdangsidimpuan</item>
+        <item>Pagar Alam</item>
+        <item>Palangka Raya</item>
+        <item>Palembang</item>
+        <item>Palopo</item>
+        <item>Palu</item>
+        <item>Pangkalpinang</item>
+        <item>Parepare</item>
+        <item>Pariaman</item>
+        <item>Pasuruan</item>
+        <item>Payakumbuh</item>
+        <item>Pekalongan</item>
+        <item>Pekanbaru</item>
+        <item>Pematangsiantar</item>
+        <item>Pontianak</item>
+        <item>Prabumulih</item>
+        <item>Probolinggo</item>
+        <item>Sabang</item>
+        <item>Salatiga</item>
+        <item>Samarinda</item>
+        <item>Sawahlunto</item>
+        <item>Semarang</item>
+        <item>Sibolga</item>
+        <item>Singkawang</item>
+        <item>Solok</item>
+        <item>Sorong</item>
+        <item>Subulussalam</item>
+        <item>Sukabumi</item>
+        <item>Sungai Penuh</item>
+        <item>Surabaya</item>
+        <item>Surakarta</item>
+        <item>Tangerang</item>
+        <item>Tangerang Selatan</item>
+        <item>Tanjungbalai</item>
+        <item>Tanjungpinang</item>
+        <item>Tarakan</item>
+        <item>Tasikmalaya</item>
+        <item>Tebing Tinggi</item>
+        <item>Tegal</item>
+        <item>Ternate</item>
+        <item>Tidore Kepulauan</item>
+        <item>Tomohon</item>
+        <item>Tual</item>
+        <item>Yogyakarta</item>
+    </string-array>
+    <string name="navbar_home">Home</string>
+    <string name="navbar_notification">Notifikasi</string>
+    <string name="navbar_sell">Jual</string>
+    <string name="navbar_sale_list">Daftar Jual</string>
+    <string name="navbar_account">Akun</string>
+
+    <string name="title_product">Title Product</string>
+    <string name="bandung">Bandung</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="deskripsi">Deskripsi</string>
+    <string name="saya_tertarik_dan_ingin_nego">Saya Tertarik dan Ingin Nego</string>
+    <string name="rp_1_000_000">Rp 1.000.000</string>
+    <string name="category">Category</string>
+    <string name="tawaran">Harga tawaranmu akan diketahui penjual, jika penjual cocok kamu akan segera dihubungi penjual</string>
+    <string name="masukan_harga_tawarmu">Masukan Harga Tawarmu</string>
+    <string name="kirim">Kirim</string>
+    <string name="seller_name">Seller Name</string>
+    <string name="silahkan_login_untuk_melanjutkan_penawaran">Silahkan login untuk melanjutkan penawaran</string>
+    <string name="login">Login</string>
 </resources>

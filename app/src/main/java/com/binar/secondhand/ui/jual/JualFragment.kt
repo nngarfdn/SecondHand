@@ -32,8 +32,8 @@ class JualFragment : Fragment() {
         if (isLoggedIn==0){
             startActivity(Intent(context, AuthActivity::class.java))
         }else{
-            startActivity(Intent(context,AddProductActivity::class.java))
-//            startActivity(Intent(context,CompleteAccountActivity::class.java))
+//            startActivity(Intent(context,AddProductActivity::class.java))
+            startActivity(Intent(context,CompleteAccountActivity::class.java))
         }
         return binding.root
     }

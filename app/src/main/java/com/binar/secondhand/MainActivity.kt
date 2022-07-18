@@ -29,33 +29,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupNav() {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostActivity) as NavHostFragment
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_host) as NavHostFragment
         val navController = navHostFragment.navController
 
 
 
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.navigation_home -> { showBottomNav() }
-                R.id.navigation_akun -> { showBottomNav() }
-                R.id.navigation_jual -> { showBottomNav() }
-                R.id.navigation_list -> { showBottomNav() }
-                R.id.navigation_notif -> { showBottomNav() }
-                else -> {
-                    hideBottomNav()
-                }
-            }
-        }
-
-        binding.navView.setupWithNavController(navController)
     }
 
-    private fun showBottomNav() {
-        binding.navView.visibility = View.VISIBLE
-    }
 
-    private fun hideBottomNav() {
-        binding.navView.visibility = View.GONE
-    }
 
 }

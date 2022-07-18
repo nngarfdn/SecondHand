@@ -25,6 +25,7 @@ import com.binar.secondhand.data.source.remote.network.Resource
 import com.binar.secondhand.data.source.remote.request.AddProductRequest
 import com.binar.secondhand.data.source.remote.request.EditProfileRequest
 import com.binar.secondhand.databinding.ActivityCompleteAccountBinding
+import com.binar.secondhand.kel2.ui.profile.ProfileViewModel
 import com.binar.secondhand.ui.addproduct.AddProductActivity
 import com.binar.secondhand.ui.productlist.ProductListViewModel
 import com.binar.secondhand.utils.RealPathUtil
@@ -49,7 +50,7 @@ class CompleteAccountActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         binding.apply {
-            actionBar.txtTitle.text = "Lengkapi Info Akun"
+//            actionBar.txtTitle.text = "Lengkapi Info Akun"
             imgProfile.setOnClickListener { checkingPermissions()
                 openGallery()}
         }
@@ -173,46 +174,46 @@ class CompleteAccountActivity : AppCompatActivity() {
             val city = edtCity.text.toString()
             val address = edtAddress.text.toString()
             val tlp = edtTlp.text.toString()
-            if (name.isNotEmpty() && city.isNotEmpty() && address.isNotEmpty() && tlp.isNotEmpty()){
-                result.data?.data?.let { it1 -> uriToFile(it1, this@CompleteAccountActivity) }
-                    ?.let { it2 ->
-                        EditProfileRequest(
-                            name, "tester01@email.com", "123456", 0, "Bantul",
-                            it2
-                        )
-                    }?.let { it3 ->
-                        viewModel.completeAccount(
-                            184,
-                            it3
-                        ).observe(this@CompleteAccountActivity){ response ->
-                            when (response) {
-                                is Resource.Loading -> Toast.makeText(
-                                    this@CompleteAccountActivity,
-                                    "loading",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                                is Resource.Success -> {
-                                    Toast.makeText(
-                                        this@CompleteAccountActivity,
-                                        "success",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                    startActivity(Intent(this@CompleteAccountActivity, AddProductActivity::class.java))
-                                }
-                                is Resource.Error -> {
-                                    Toast.makeText(
-                                        this@CompleteAccountActivity,
-                                        "error ${response.message} ",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                    Log.d("err", "error ${response.message}")
-                                }
-                            }
-                        }
-                    }
-            } else {
-                Toast.makeText(this@CompleteAccountActivity, "Lengkapi semua data", Toast.LENGTH_SHORT).show()
-            }
+//            if (name.isNotEmpty() && city.isNotEmpty() && address.isNotEmpty() && tlp.isNotEmpty()){
+//                result.data?.data?.let { it1 -> uriToFile(it1, this@CompleteAccountActivity) }
+//                    ?.let { it2 ->
+//                        EditProfileRequest(
+//                            name, "tester01@email.com", "123456", 0, "Bantul",
+//                            it2
+//                        )
+//                    }?.let { it3 ->
+//                        viewModel.completeAccount(
+//                            184,
+//                            it3
+//                        ).observe(this@CompleteAccountActivity){ response ->
+//                            when (response) {
+//                                is Resource.Loading -> Toast.makeText(
+//                                    this@CompleteAccountActivity,
+//                                    "loading",
+//                                    Toast.LENGTH_SHORT
+//                                ).show()
+//                                is Resource.Success -> {
+//                                    Toast.makeText(
+//                                        this@CompleteAccountActivity,
+//                                        "success",
+//                                        Toast.LENGTH_SHORT
+//                                    ).show()
+//                                    startActivity(Intent(this@CompleteAccountActivity, AddProductActivity::class.java))
+//                                }
+//                                is Resource.Error -> {
+//                                    Toast.makeText(
+//                                        this@CompleteAccountActivity,
+//                                        "error ${response.message} ",
+//                                        Toast.LENGTH_SHORT
+//                                    ).show()
+//                                    Log.d("err", "error ${response.message}")
+//                                }
+//                            }
+//                        }
+//                    }
+//            } else {
+//                Toast.makeText(this@CompleteAccountActivity, "Lengkapi semua data", Toast.LENGTH_SHORT).show()
+//            }
         }
 
         }
