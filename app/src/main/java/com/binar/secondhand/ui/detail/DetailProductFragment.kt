@@ -3,6 +3,7 @@ package com.binar.secondhand.kel2.ui.detail
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import android.view.View.inflate
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
@@ -25,15 +26,13 @@ class DetailProductFragment :
     //    private var _binding: FragmentDetailProductBinding? = null
 //    private val binding get() = _binding!!
     private val viewModel: DetailProductViewModel by viewModel()
-    private val args: DetailProductFragmentArgs by navArgs()
+    private val args: FragmentDetailArgs by navArgs()
     private var isBid = false
-
-
 
     @SuppressLint("ResourceAsColor", "SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val productId = args.productId
+//        val productId = args.productId
         binding.tvPrice
 
         setUpObserver()

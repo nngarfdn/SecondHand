@@ -5,7 +5,7 @@ import android.view.View
 import com.binar.secondhand.R
 import com.binar.secondhand.databinding.FragmentMainBinding
 import com.binar.secondhand.kel2.ui.base.BaseFragment
-import com.binar.secondhand.kel2.ui.home.HomeFragment
+import com.binar.secondhand.ui.home.HomeFragment
 import com.binar.secondhand.ui.notification.NotificationFragment
 import com.binar.secondhand.ui.sale.main.ProductSaleListFragment
 import com.binar.secondhand.ui.account.AccountFragment

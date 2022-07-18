@@ -1,4 +1,4 @@
-package com.binar.secondhand.kel2.ui.home
+package com.binar.secondhand.ui.home
 
 import android.os.Bundle
 import android.view.View
@@ -12,6 +12,9 @@ import com.binar.secondhand.kel2.data.api.model.buyer.product.GetProductResponse
 import com.binar.secondhand.kel2.data.api.model.seller.banner.get.GetBannerResponse
 import com.binar.secondhand.kel2.data.resource.Status
 import com.binar.secondhand.kel2.ui.base.BaseFragment
+import com.binar.secondhand.kel2.ui.home.HomeBannerAdapter
+import com.binar.secondhand.kel2.ui.home.HomeProductAdapter
+import com.binar.secondhand.kel2.ui.home.HomeViewModel
 import com.binar.secondhand.kel2.ui.main.MainFragment
 
 import com.bumptech.glide.Glide
@@ -21,9 +24,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
-
     private val homeViewModel by viewModel<HomeViewModel>()
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -36,17 +37,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         if (token.isNotEmpty()){
             homeViewModel.getAuth()
-            binding.tvUserName.setOnClickListener {
-                it.findNavController().navigate(R.id.action_mainFragment_to_profileFragment2)
-            }
+//            binding.tvUserName.setOnClickListener {
+//                it.findNavController().navigate(R.id.action_mainFragment_to_profileFragment2)
+//            }
             binding.ivProfilePhoto.setOnClickListener {
                 it.findNavController().navigate(R.id.action_mainFragment_to_profileFragment2)
             }
         }else{
-            binding.tvUserName.text = "Click to login"
-            binding.tvUserName.setOnClickListener {
-                it.findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
-            }
+//            binding.tvUserName.text = "Click to login"
+//            binding.tvUserName.setOnClickListener {
+//                it.findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
+//            }
         }
 
         homeViewModel.getHomeBanner()
@@ -203,7 +204,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                                 .error(R.drawable.round_camera)
                                 .into(binding.ivProfilePhoto)
 
-                            binding.tvUserName.text = it.data.body()?.fullName
+//                            binding.tvUserName.text = it.data.body()?.fullName
                         }
                     }
                 }
@@ -262,10 +263,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     private fun showHomeProductList(productResponse: GetProductResponse?) {
-        val adapter = HomeProductAdapter {
+        val adapter = HomeProductAdapter { it ->
             //onclick item
-//            val action = MainFragmentDirections.actionMainFragmentToDetailProductFragment(it.id)
-//            findNavController().navigate(action)
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailProductFragment()
+            action.idProduct = it.id
+            findNavController().navigate(action)
         }
 
         adapter.submitList(productResponse)

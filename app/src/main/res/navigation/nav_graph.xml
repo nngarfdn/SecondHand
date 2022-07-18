@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.binar.secondhand.kel2.ui.register.RegisterFragment"
+        android:name="com.binar.secondhand.ui.auth.register.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -65,7 +65,7 @@
         tools:layout="@layout/fragment_profile"/>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.binar.secondhand.kel2.ui.main.MainFragment"
+        android:name="com.binar.secondhand.ui.home.HomeFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -80,7 +80,7 @@
             app:destination="@id/registerFragment"
             app:launchSingleTop="true" />
         <action
-            android:id="@+id/action_mainFragment_to_detailProductFragment"
+            android:id="@+id/action_homeFragment_to_detailProductFragment"
             app:destination="@id/detailProductFragment" />
         <action
             android:id="@+id/action_mainFragment_to_bidderFragment"
@@ -100,19 +100,19 @@
     </fragment>
     <fragment
         android:id="@+id/detailProductFragment"
-        android:name="com.binar.secondhand.kel2.ui.detail.DetailProductFragment"
+        android:name="com.binar.secondhand.ui.detail.DetailFragment"
         android:label="fragment_detail_product"
-        tools:layout="@layout/fragment_detail_product" >
-        <argument
-            android:name="product_id"
-            app:argType="integer"
-            android:defaultValue="0" />
+        tools:layout="@layout/fragment_detail_product">
         <action
             android:id="@+id/action_detailProductFragment_to_buyerPenawaranFragment"
             app:destination="@id/buyerPenawaranFragment" />
         <action
             android:id="@+id/action_detailProductFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <argument
+            android:name="id_product"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/buyerPenawaranFragment"
