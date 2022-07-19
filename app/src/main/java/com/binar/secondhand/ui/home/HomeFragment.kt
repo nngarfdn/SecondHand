@@ -3,6 +3,7 @@ package com.binar.secondhand.ui.home
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
@@ -265,9 +266,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private fun showHomeProductList(productResponse: GetProductResponse?) {
         val adapter = HomeProductAdapter { it ->
             //onclick item
-            val action = HomeFragmentDirections.actionHomeFragmentToDetailProductFragment()
-            action.idProduct = it.id
-            findNavController().navigate(action)
+//            val action = HomeFragmentDirections.actionHomeFragmentToDetailProductFragment()
+//            action.idProduct = it.id
+//            findNavController().navigate(action)
+            val bundle = bundleOf("id_product" to it.id)
+            findNavController().navigate(R.id.action_homeFragment_to_detailProductFragment,bundle)
         }
 
         adapter.submitList(productResponse)

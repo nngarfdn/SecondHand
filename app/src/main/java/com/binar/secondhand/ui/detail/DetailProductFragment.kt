@@ -1,4 +1,4 @@
-package com.binar.secondhand.kel2.ui.detail
+package com.binar.secondhand.ui.detail
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -10,10 +10,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.binar.secondhand.R
 import com.binar.secondhand.databinding.DetailProductBinding
-
 import com.binar.secondhand.kel2.data.resource.Status
-
 import com.binar.secondhand.kel2.ui.base.BaseFragment
+import com.binar.secondhand.kel2.ui.detail.BuyerPenawaranFragment
+import com.binar.secondhand.kel2.ui.detail.DetailProductViewModel
+
+import com.binar.secondhand.ui.preview.PreviewFragmentArgs
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.getKoin
@@ -26,20 +28,24 @@ class DetailProductFragment :
     //    private var _binding: FragmentDetailProductBinding? = null
 //    private val binding get() = _binding!!
     private val viewModel: DetailProductViewModel by viewModel()
-    private val args: FragmentDetailArgs by navArgs()
     private var isBid = false
 
-    @SuppressLint("ResourceAsColor", "SetTextI18n")
+//    val args: DetailProductFragmentArgs by navArgs()
+
+    @SuppressLint("ResourceAsColor", "SetTextI18n", "NewApi")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        val productId = args.productId
+        val productId = arguments?.getInt("id_product")
+//        val productId = args.idProduct
+        Toast.makeText(context, "$productId", Toast.LENGTH_SHORT).show()
         binding.tvPrice
 
         setUpObserver()
         getKoin().getProperty("access_token", "")
 
 
-        viewModel.getDetailProduct(productId)
+
+        productId?.let { viewModel.getDetailProduct(it) }
         viewModel.getBuyerOrder()
 
         binding.ivBack.setOnClickListener {
@@ -48,11 +54,13 @@ class DetailProductFragment :
 
         binding.btnTertarik.setOnClickListener {
 
-            val modal = BuyerPenawaranFragment(
-                productId,
-                refreshButton = { viewModel.getBuyerOrder() }
-            )
-            modal.show(parentFragmentManager, "Tag")
+            val modal = productId?.let { it1 ->
+                BuyerPenawaranFragment(
+                    it1,
+                    refreshButton = { viewModel.getBuyerOrder() }
+                )
+            }
+            modal?.show(parentFragmentManager, "Tag")
 
 
         }
