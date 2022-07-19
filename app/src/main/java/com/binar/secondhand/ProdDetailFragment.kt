@@ -1,20 +1,21 @@
-package com.binar.secondhand.ui.detail
+package com.binar.secondhand
 
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
-import com.binar.secondhand.R
+import androidx.navigation.fragment.navArgs
 import com.binar.secondhand.databinding.DetailProductBinding
-
+import com.binar.secondhand.databinding.FragmentProdDetailBinding
 import com.binar.secondhand.kel2.data.resource.Status
-
 import com.binar.secondhand.kel2.ui.base.BaseFragment
 import com.binar.secondhand.kel2.ui.detail.BuyerPenawaranFragment
+import com.binar.secondhand.ui.detail.DetailProductViewModel
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.getKoin
@@ -22,12 +23,11 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.DecimalFormat
 import java.text.NumberFormat
 
-class DetailProductFragment :
-    BaseFragment<DetailProductBinding>(DetailProductBinding::inflate) {
+class ProdDetailFragment : BaseFragment<FragmentProdDetailBinding>(FragmentProdDetailBinding::inflate) {
     //    private var _binding: FragmentDetailProductBinding? = null
 //    private val binding get() = _binding!!
     private val viewModel: DetailProductViewModel by viewModel()
-//    private val args: FragmentDetailArgs by navArgs()
+        private val args: ProdDetailFragmentArgs by navArgs()
     private var isBid = false
 
     @RequiresApi(Build.VERSION_CODES.M)

@@ -72,7 +72,6 @@ class DetailFragment : Fragment() {
                             response.data?.image_url,
                             response.data?.image_url
                         )
-
                         createSlider(assets)
                     }
                 }
@@ -96,7 +95,9 @@ class DetailFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         binding.viewPager.unregisterOnPageChangeCallback(
-            object : ViewPager2.OnPageChangeCallback() {}
+            object : ViewPager2.OnPageChangeCallback() {
+
+            }
         )
     }
 }

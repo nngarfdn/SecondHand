@@ -37,7 +37,7 @@
             android:name=".ui.profile.CompleteAccountActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".kel2.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.binar.secondhand.kel2.ui.detail
+package com.binar.secondhand.ui.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

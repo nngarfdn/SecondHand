@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 //        startActivity(Intent(this, CompleteAccountActivity::class.java))
-        setupNav()
+//        setupNav()
     }
 
     private fun setupNav() {

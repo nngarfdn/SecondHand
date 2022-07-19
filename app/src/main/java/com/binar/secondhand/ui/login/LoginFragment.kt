@@ -1,10 +1,12 @@
 package com.binar.secondhand.ui.login
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.binar.secondhand.MainActivity
 import com.binar.secondhand.R
 import com.binar.secondhand.databinding.FragmentLoginBinding
 import com.binar.secondhand.kel2.data.api.model.auth.login.PostLoginRequest
@@ -28,27 +30,27 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         super.onViewCreated(view, savedInstanceState)
         setUpObserver()
 
-//        binding.tvDaftarDisini.setOnClickListener {
-//            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
-//        }
-//
+        binding.tvDaftar.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+        }
+
 //        binding.tvSignup.setOnClickListener {
 //            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
 //        }
 
-//        binding.btnMasuk.setOnClickListener {
-//            val loginPostRequest = PostLoginRequest(
-//                binding.etEmail.text.toString(),
-//                binding.etMasukkanPassowrd.text.toString()
-//            )
-//
-//            if (binding.etEmail.text.isNullOrEmpty() || binding.etMasukkanPassowrd.text.isNullOrEmpty()) {
-//                Toast.makeText(context, "Email atau Password tidak boleh kosong", Toast.LENGTH_SHORT).show()
-//            }
-//            else {
-//                loginViewModel.postLogin(loginPostRequest)
-//            }
-//        }
+        binding.btnLogin.setOnClickListener {
+            val loginPostRequest = PostLoginRequest(
+                binding.etEmailLogin.text.toString(),
+                binding.etPasswordLogin.text.toString()
+            )
+
+            if (binding.etEmailLogin.text.isNullOrEmpty() || binding.etPasswordLogin.text.isNullOrEmpty()) {
+                Toast.makeText(context, "Email atau Password tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                loginViewModel.postLogin(loginPostRequest)
+            }
+        }
     }
 
     private fun setUpObserver() {
@@ -94,6 +96,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
 //                            findNavController().navigate(R.id.action_loginFragment_to_profileFragment)
                             findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+//                            startActivity(Intent(context, com.binar.secondhand.kel2.ui.MainActivity::class.java))
                         }
 
                         401 -> {

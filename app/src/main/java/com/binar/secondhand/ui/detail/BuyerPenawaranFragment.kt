@@ -4,14 +4,12 @@ package com.binar.secondhand.kel2.ui.detail
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
-import android.text.Selection
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.binar.secondhand.R
 import com.binar.secondhand.databinding.FragmentBuyerPenawaranBinding
@@ -79,10 +77,10 @@ class BuyerPenawaranFragment(
             }
 
             override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if (!s.toString().startsWith("Rp. ")) {
-                    etMoney.setMaskingMoney("Rp. ")
-                    Selection.setSelection(etMoney.text, etMoney.text!!.length)
-                }
+//                if (!s.toString().startsWith("Rp. ")) {
+//                    etMoney.setMaskingMoney("Rp. ")
+//                    Selection.setSelection(etMoney.text, etMoney.text!!.length)
+//                }
 
             }
         })
@@ -93,10 +91,10 @@ class BuyerPenawaranFragment(
 
             }else {
                 binding.etHargaTawar.text
-                val harga = etMoney.text.toString().replace("Rp. ", "").replace(",", "")
+                val harga = etMoney.text.toString()
                 val buyerPenawaran = PostOrderRequest(
                     productId,
-                    harga.toInt()
+                    etMoney.text.toString().toInt()
                 )
                 viewModel.buyerOrder(buyerPenawaran)
                 refreshButton()
@@ -164,7 +162,6 @@ class BuyerPenawaranFragment(
                             it.data.body()?.updatedAt
 //                            etMoney.text.clear()
 
-
                             Toast.makeText(context, "Penawaran Anda Diterima", Toast.LENGTH_SHORT).show()
                             refreshButton.invoke()
                             dismiss()
@@ -215,11 +212,11 @@ class BuyerPenawaranFragment(
                 val editText = editTextWeakReference.get() ?: return
                 val s = editable.toString()
                 editText.removeTextChangedListener(this)
-                val cleanString = s.replace("[Rp,. ]".toRegex(), "")
-                val newval = currencyText + cleanString.monetize()
+//                val cleanString = s.replace("[Rp,. ]".toRegex(), "")
+//                val newval = currencyText + cleanString.monetize()
 
-                editText.setText(newval)
-                editText.setSelection(newval.length)
+//                editText.setText(newval)
+//                editText.setSelection(newval.length)
                 editText.addTextChangedListener(this)
             }
         })

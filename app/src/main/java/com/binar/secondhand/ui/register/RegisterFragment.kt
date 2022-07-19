@@ -1,4 +1,4 @@
-package com.binar.secondhand.kel2.ui.register
+package com.binar.secondhand.ui.register
 
 import android.content.Intent
 import android.net.Uri
@@ -22,32 +22,32 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
         setUpObserver()
 
-//        binding.tvSignin.setOnClickListener {
-//            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-//        }
-//
-//        binding.btnSignup.setOnClickListener {
-//            val registerPostRequest = PostRegisterRequest(
-//                binding.etNama.text.toString(),
-//                binding.etEmail.text.toString(),
-//                binding.etPassowrd.text.toString(),
-//                0,"-",R.drawable.default_profile.toString(),"-"
-//            )
-//
-//            if (binding.etNama.text.isNullOrEmpty() || binding.etEmail.text.isNullOrEmpty() || binding.etPassowrd.text.isNullOrEmpty()) {
-//                Toast.makeText(context, "Kolom tidak boleh kosong", Toast.LENGTH_SHORT).show()
-//            }
-//            else if (binding.etPassowrd.text.toString().length < 6) {
-//                Toast.makeText(context, "Password minimal 6 character", Toast.LENGTH_SHORT).show()
-//            }
-//            else if (binding.etPassowrd.text.toString().lowercase() != binding.etKonfirmasiPassowrd.text.toString().lowercase()) {
-//                Toast.makeText(context, "Password tidak sama", Toast.LENGTH_SHORT).show()
-//            }
-//            else {
-//                registerViewModel.postRegister(registerPostRequest)
-//            }
-//        }
-//
+        binding.tvMasuk.setOnClickListener {
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+        }
+
+        binding.btnRegist.setOnClickListener {
+            val registerPostRequest = PostRegisterRequest(
+                binding.etNamaRegister.text.toString(),
+                binding.etEmailRegister.text.toString(),
+                binding.etPasswordRegister.text.toString(),
+                0,"-",R.drawable.default_profile.toString(),"-"
+            )
+
+            if (binding.etNamaRegister.text.isNullOrEmpty() || binding.etEmailRegister.text.isNullOrEmpty() || binding.etPasswordRegister.text.isNullOrEmpty()) {
+                Toast.makeText(context, "Kolom tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            }
+            else if (binding.etPasswordRegister.text.toString().length < 6) {
+                Toast.makeText(context, "Password minimal 6 character", Toast.LENGTH_SHORT).show()
+            }
+            else if (binding.etPasswordRegister.text.toString().lowercase() != binding.etPasswordRegister.text.toString().lowercase()) {
+                Toast.makeText(context, "Password tidak sama", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                registerViewModel.postRegister(registerPostRequest)
+            }
+        }
+
 //        binding.tvPrivacyPolicy.setOnClickListener {
 //            directToUri()
 //        }
