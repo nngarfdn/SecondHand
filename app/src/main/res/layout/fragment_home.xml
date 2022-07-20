@@ -24,6 +24,7 @@
         android:layout_marginEnd="16dp"
         android:src="@drawable/ic_fav"
         app:tint="#757575"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/et_search"
         app:layout_constraintEnd_toStartOf="@id/et_search"
         app:layout_constraintHorizontal_bias="1.0"
@@ -38,6 +39,7 @@
         android:layout_marginEnd="32dp"
         android:src="@drawable/ic_baseline_search_24"
         app:tint="#757575"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,7 +63,7 @@
         android:id="@+id/layout_header"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,8 +90,7 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardView"
                         android:layout_width="0dp"
-                        android:layout_height="170dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_height="200dp"
                         app:cardElevation="0dp"
                         app:cardBackgroundColor="@color/transparent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -128,8 +129,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/cardView" />
 
-
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -167,9 +166,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView"
-                    app:tabBackground="@drawable/home_category_tab_background"
                     app:tabIconTint="@color/main_category_tab_icon_color"
                     app:tabIndicator="@null"
+                    app:tabBackground="@drawable/home_category_tab_background"
                     app:tabInlineLabel="true"
                     app:tabMode="scrollable"
                     app:tabPaddingEnd="28dp"

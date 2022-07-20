@@ -46,12 +46,6 @@ val viewModelModule = module {
 
     viewModelOf(::RegisterViewModel)
 
-
-
-
-
-
-    
     viewModelOf(::BuyerPenawaranViewModel)
 
     viewModelOf(::SellerDetailProductViewModel)
