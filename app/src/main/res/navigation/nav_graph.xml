@@ -80,7 +80,7 @@
             app:destination="@id/registerFragment"
             app:launchSingleTop="true" />
         <action
-            android:id="@+id/action_homeFragment_to_detailProductFragment"
+            android:id="@+id/action_mainFragment_to_detailProductFragment"
             app:destination="@id/detailProductFragment" />
         <action
             android:id="@+id/action_mainFragment_to_bidderFragment"
@@ -97,6 +97,9 @@
         <action
             android:id="@+id/action_mainFragment_to_searchPageFragment"
             app:destination="@id/searchPageFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_prodDetailFragment2"
+            app:destination="@id/prodDetailFragment2" />
     </fragment>
     <fragment
         android:id="@+id/detailProductFragment"

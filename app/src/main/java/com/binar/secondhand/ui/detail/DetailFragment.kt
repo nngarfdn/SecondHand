@@ -43,7 +43,7 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val idProduct = arguments?.getInt("id_product")
 
-        Toast.makeText(context, "$idProduct", Toast.LENGTH_SHORT).show()
+
 
         binding.nego.setOnClickListener {
             when {

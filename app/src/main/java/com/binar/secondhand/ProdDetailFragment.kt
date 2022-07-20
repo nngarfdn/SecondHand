@@ -27,21 +27,24 @@ class ProdDetailFragment : BaseFragment<FragmentProdDetailBinding>(FragmentProdD
     //    private var _binding: FragmentDetailProductBinding? = null
 //    private val binding get() = _binding!!
     private val viewModel: DetailProductViewModel by viewModel()
-        private val args: ProdDetailFragmentArgs by navArgs()
+//        private val args: ProdDetailFragmentArgs by navArgs()
     private var isBid = false
 
     @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("ResourceAsColor", "SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val productId = 1
+//        val productId = args.idProduct
+        val productId = arguments?.getInt("id_product")
         binding.tvPrice
 
         setUpObserver()
         getKoin().getProperty("access_token", "")
 
 
-        viewModel.getDetailProduct(productId)
+        if (productId != null) {
+            viewModel.getDetailProduct(productId)
+        }
         viewModel.getBuyerOrder()
 
         binding.ivBack.setOnClickListener {
@@ -50,11 +53,13 @@ class ProdDetailFragment : BaseFragment<FragmentProdDetailBinding>(FragmentProdD
 
         binding.btnTertarik.setOnClickListener {
 
-            val modal = BuyerPenawaranFragment(
-                productId,
-                refreshButton = { viewModel.getBuyerOrder() }
-            )
-            modal.show(parentFragmentManager, "Tag")
+            val modal = productId?.let { it1 ->
+                BuyerPenawaranFragment(
+                    it1,
+                    refreshButton = { viewModel.getBuyerOrder() }
+                )
+            }
+            modal?.show(parentFragmentManager, "Tag")
 
 
         }

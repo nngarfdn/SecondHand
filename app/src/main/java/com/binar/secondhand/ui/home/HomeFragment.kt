@@ -17,7 +17,6 @@ import com.binar.secondhand.kel2.ui.home.HomeBannerAdapter
 import com.binar.secondhand.kel2.ui.home.HomeProductAdapter
 import com.binar.secondhand.kel2.ui.home.HomeViewModel
 import com.binar.secondhand.kel2.ui.main.MainFragment
-
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import org.koin.android.ext.android.getKoin
@@ -266,11 +265,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private fun showHomeProductList(productResponse: GetProductResponse?) {
         val adapter = HomeProductAdapter { it ->
             //onclick item
-//            val action = HomeFragmentDirections.actionHomeFragmentToDetailProductFragment()
+//            val action = HomeFragmentDirections.actionMainFragmentToDetailProductFragment()
 //            action.idProduct = it.id
 //            findNavController().navigate(action)
             val bundle = bundleOf("id_product" to it.id)
-            findNavController().navigate(R.id.action_homeFragment_to_detailProductFragment,bundle)
+            findNavController().navigate(R.id.action_mainFragment_to_prodDetailFragment2,bundle)
         }
 
         adapter.submitList(productResponse)
