@@ -6,12 +6,14 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.binar.secondhand.R
+import com.binar.secondhand.SecondHandApp
 import com.binar.secondhand.databinding.FragmentNotificationBinding
 import com.binar.secondhand.kel2.data.api.model.notification.GetNotificationResponse
 import com.binar.secondhand.kel2.data.resource.Status
 import com.binar.secondhand.kel2.ui.base.BaseFragment
 import com.binar.secondhand.kel2.ui.main.MainFragment
 import com.binar.secondhand.kel2.ui.notification.NotificationViewModel
+import com.binar.secondhand.utils.Constant
 import org.koin.android.ext.android.getKoin
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
@@ -27,16 +29,10 @@ class NotificationFragment :
 
         MainFragment.activePage = R.id.main_notification
 
-        val token = getKoin().getProperty("access_token", "")
+        val token = SecondHandApp.getSharedPreferences().getString(Constant.TOKEN, "")
 
         if (token == "") {
-            binding.rvNotification.visibility = View.GONE
-            binding.tvNotification.visibility = View.GONE
-
-            binding.btnLogin.setOnClickListener {
-                it.findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
-            }
-
+            findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
         } else {
             binding.ivLogin.visibility = View.GONE
             binding.tvLogin.visibility = View.GONE

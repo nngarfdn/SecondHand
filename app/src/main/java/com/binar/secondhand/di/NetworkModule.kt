@@ -1,7 +1,10 @@
 package com.binar.secondhand.kel2.di
 
+import com.binar.secondhand.SecondHandApp
 import com.binar.secondhand.kel2.data.api.service.ApiHelper
 import com.binar.secondhand.kel2.data.api.service.ApiService
+import com.chuckerteam.chucker.api.ChuckerCollector
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.module.dsl.singleOf
@@ -22,10 +25,19 @@ val networkModule = module {
             .addInterceptor(get<HttpLoggingInterceptor>())
             .addInterceptor {
                 val request = it.request().newBuilder()
-                    .addHeader("access_token", getProperty("access_token", ""))
+                    .addHeader("access_token",
+                        SecondHandApp.getSharedPreferences().getString("token","").toString(),)
                     .build()
                 it.proceed(request)
             }
+            .addInterceptor(
+            ChuckerInterceptor.Builder(SecondHandApp.getContext())
+                .collector(ChuckerCollector(SecondHandApp.getContext()))
+                .maxContentLength(250000L)
+                .redactHeaders(emptySet())
+                .alwaysReadResponseBody(false)
+                .build()
+        )
             .build()
     }
     single {

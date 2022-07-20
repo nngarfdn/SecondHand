@@ -8,11 +8,13 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.binar.secondhand.MainActivity
 import com.binar.secondhand.R
+import com.binar.secondhand.SecondHandApp
 import com.binar.secondhand.databinding.FragmentLoginBinding
 import com.binar.secondhand.kel2.data.api.model.auth.login.PostLoginRequest
 import com.binar.secondhand.kel2.data.resource.Status
 import com.binar.secondhand.kel2.ui.base.BaseFragment
 import com.binar.secondhand.kel2.ui.login.LoginViewModel
+import com.binar.secondhand.utils.Constant
 import org.koin.android.ext.android.getKoin
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -93,8 +95,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
                             //set access token setelah dapet dari login
                             getKoin().setProperty("access_token", accesToken.toString())
+                            SecondHandApp.getSharedPreferences().edit().apply {
+                                putInt(Constant.IS_LOGGED_ID,1)
+                                putString(Constant.EMAIL, data?.email)
+                                putString(Constant.TOKEN, data?.accessToken)
+                            }.apply()
 
-//                            findNavController().navigate(R.id.action_loginFragment_to_profileFragment)
                             findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
 //                            startActivity(Intent(context, com.binar.secondhand.kel2.ui.MainActivity::class.java))
                         }
