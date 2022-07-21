@@ -8,7 +8,7 @@ import com.binar.secondhand.data.repositories.BuyerRepository
 import com.binar.secondhand.kel2.data.api.model.buyer.order.get.GetOrderResponse
 import com.binar.secondhand.kel2.data.api.model.buyer.productid.GetProductIdResponse
 import com.binar.secondhand.kel2.data.api.model.buyer.productid.UserProduct
-import com.binar.secondhand.kel2.data.repository.Repository
+import com.binar.secondhand.data.repository.Repository
 import com.binar.secondhand.kel2.data.resource.Resource
 import kotlinx.coroutines.launch
 import retrofit2.Response

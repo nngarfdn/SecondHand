@@ -29,7 +29,7 @@ class NotificationFragment :
 
         MainFragment.activePage = R.id.main_notification
 
-        val token = SecondHandApp.getSharedPreferences().getString(Constant.TOKEN, "")
+        val token = SecondHandApp.getSharedPreferences().getString(Constant.TOKEN, "")  ?: ""
 
         if (token == "") {
             findNavController().navigate(R.id.action_mainFragment_to_loginFragment)

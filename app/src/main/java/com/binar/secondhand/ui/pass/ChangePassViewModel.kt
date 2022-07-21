@@ -6,8 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.binar.secondhand.kel2.data.api.model.auth.password.PutPassRequest
 import com.binar.secondhand.kel2.data.api.model.auth.password.PutPassResponse
-import com.binar.secondhand.kel2.data.api.model.auth.user.PutAuthResponse
-import com.binar.secondhand.kel2.data.repository.Repository
+import com.binar.secondhand.data.repository.Repository
 import com.binar.secondhand.kel2.data.resource.Resource
 import kotlinx.coroutines.launch
 import retrofit2.Response

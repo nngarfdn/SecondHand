@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.binar.secondhand.kel2.data.api.model.auth.user.GetAuthResponse
-import com.binar.secondhand.kel2.data.api.model.auth.user.PutAuthRequest
 import com.binar.secondhand.kel2.data.api.model.auth.user.PutAuthResponse
-import com.binar.secondhand.kel2.data.repository.Repository
+import com.binar.secondhand.data.repository.Repository
+import com.binar.secondhand.data.source.remote.request.EditProfileRequest
 import com.binar.secondhand.kel2.data.resource.Resource
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
@@ -18,6 +18,8 @@ class ProfileViewModel(private val repository: Repository) : ViewModel() {
 
     private val _authPutResponse = MutableLiveData<Resource<Response<PutAuthResponse>>>()
     val authPutResponse: LiveData<Resource<Response<PutAuthResponse>>> get() = _authPutResponse
+
+    fun completeAccount(id: Int, request: EditProfileRequest) = repository.editUser(id, request)
 
     fun putAuth(
         fullname: RequestBody,

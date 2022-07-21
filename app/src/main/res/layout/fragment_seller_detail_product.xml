@@ -67,6 +67,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_name">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_name1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true" />
@@ -102,6 +103,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_price">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_price1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
@@ -207,6 +209,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:id="@+id/et_description1"
                     android:layout_height="80dp"
                     android:gravity="top"
                     android:maxLength="256" />
@@ -224,10 +227,11 @@
 
             <ImageView
                 android:id="@+id/iv_photo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/add_img"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_photo" />
@@ -284,6 +288,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/login"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -299,6 +304,7 @@
         android:text="Silakan Login Dahulu"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_login" />
@@ -311,6 +317,7 @@
         android:fontFamily="@font/montserrat_alternates_semibold"
         android:text="Login"
         android:textAllCaps="false"
+        android:visibility="gone"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

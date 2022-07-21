@@ -1,16 +1,20 @@
 package com.binar.secondhand.ui.sale.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.binar.secondhand.R
+import com.binar.secondhand.SecondHandApp
 import com.binar.secondhand.databinding.FragmentProductSaleListBinding
 import com.binar.secondhand.kel2.data.resource.Status
 import com.binar.secondhand.kel2.ui.base.BaseFragment
 import com.binar.secondhand.kel2.ui.main.MainFragment
 import com.binar.secondhand.kel2.ui.sale.main.ProductSaleListViewModel
 import com.binar.secondhand.kel2.ui.sale.main.ProductViewPagerAdapter
+import com.binar.secondhand.ui.profile.CompleteAccountActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -29,14 +33,17 @@ class ProductSaleListFragment :
 
         MainFragment.activePage = R.id.main_sale_list
 
-        val token = getKoin().getProperty("access_token", "")
+        val token = SecondHandApp.getSharedPreferences().getString("token", "")  ?: ""
         if (token == "") {
             binding.groupContent.visibility = View.GONE
-            binding.groupLogin.visibility = View.VISIBLE
+            startActivity(Intent(activity, CompleteAccountActivity::class.java))
+//            findNavController().navigate(R.id.action_mainFragment_to_profileFragment2)
         } else {
             binding.groupLogin.visibility = View.GONE
             binding.btnEditProfile.setOnClickListener {
-                it.findNavController().navigate(R.id.action_mainFragment_to_profileFragment2)
+//                it.findNavController().navigate(R.id.action_mainFragment_to_profileFragment2)
+                startActivity(Intent(activity, CompleteAccountActivity::class.java))
+
             }
             setUpObserver()
             productSaleListViewModel.getAuth()

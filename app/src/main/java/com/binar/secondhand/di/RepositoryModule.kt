@@ -3,6 +3,7 @@ package com.binar.secondhand.di
 import com.binar.secondhand.data.repositories.AuthRepository
 import com.binar.secondhand.data.repositories.BuyerRepository
 import com.binar.secondhand.data.repositories.SellerRepository
+import com.binar.secondhand.data.repository.Repository
 import com.binar.secondhand.kel2.data.repository.*
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module

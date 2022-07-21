@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.binar.secondhand.kel2.data.api.model.seller.product.post.PostProductRequest
 import com.binar.secondhand.kel2.data.api.model.seller.product.post.PostProductResponse
-import com.binar.secondhand.kel2.data.repository.Repository
+import com.binar.secondhand.data.repository.Repository
+import com.binar.secondhand.data.source.remote.request.AddProductRequest
 import com.binar.secondhand.kel2.data.resource.Resource
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
@@ -16,6 +16,10 @@ import retrofit2.Response
 class SellerDetailProductViewModel(private val repository: Repository): ViewModel() {
     private val _sellerPostProduct = MutableLiveData<Resource<Response<PostProductResponse>>>()
     val sellerPostProduct: LiveData<Resource<Response<PostProductResponse>>> get() = _sellerPostProduct
+
+    fun addProduct(request: AddProductRequest) = repository.addProduct(request)
+
+    fun getAllCategory() = repository.getListCategory()
 
     fun postProduct(
         name: RequestBody,

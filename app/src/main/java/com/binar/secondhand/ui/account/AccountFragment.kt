@@ -1,12 +1,15 @@
 package com.binar.secondhand.ui.account
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.binar.secondhand.R
+import com.binar.secondhand.SecondHandApp
 import com.binar.secondhand.databinding.FragmentAccountBinding
 import com.binar.secondhand.kel2.data.resource.Status
 import com.binar.secondhand.kel2.ui.MainActivity
@@ -14,6 +17,7 @@ import com.binar.secondhand.kel2.ui.account.AccountViewModel
 import com.binar.secondhand.kel2.ui.base.BaseFragment
 import com.binar.secondhand.ui.login.LoginFragment
 import com.binar.secondhand.kel2.ui.main.MainFragment
+import com.binar.secondhand.ui.profile.CompleteAccountActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -35,9 +39,10 @@ class AccountFragment : BaseFragment<FragmentAccountBinding>(FragmentAccountBind
             this.requireActivity().getSharedPreferences(LoginFragment.LOGINUSER, Context.MODE_PRIVATE)
 
 //        val token = preferences.getString(LoginFragment.TOKEN, "")
-        val token = getKoin().getProperty("access_token", "")
+        val token = SecondHandApp.getSharedPreferences().getString("token", "") ?: ""
 
         if (token == ""){
+            findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
             Glide.with(this)
                 .load(R.drawable.round_camera)
                 .into(binding.ivCam)
@@ -54,9 +59,7 @@ class AccountFragment : BaseFragment<FragmentAccountBinding>(FragmentAccountBind
             binding.lineThree.visibility = View.GONE
             binding.tvVersion.visibility = View.GONE
 
-            binding.btnLogin.setOnClickListener {
-                it.findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
-            }
+
         }else{
             binding.ivLogin.visibility = View.GONE
             binding.tvLogin.visibility = View.GONE
@@ -71,13 +74,15 @@ class AccountFragment : BaseFragment<FragmentAccountBinding>(FragmentAccountBind
             if (token == ""){
                 it.findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
             }else{
-                it.findNavController().navigate(R.id.action_mainFragment_to_profileFragment2)
+//                it.findNavController().navigate(R.id.action_mainFragment_to_profileFragment2)
+                startActivity(Intent(activity, CompleteAccountActivity::class.java))
             }
         }
 
         binding.containerPengaturanAkun.setOnClickListener {
             // Ke fragment pengaturan akun
-            it.findNavController().navigate(R.id.action_mainFragment_to_changePassFragment)
+            Toast.makeText(activity, "Coming Soon", Toast.LENGTH_SHORT).show()
+//            it.findNavController().navigate(R.id.action_mainFragment_to_changePassFragment)
         }
 
         binding.containerKeluar.setOnClickListener {
@@ -86,8 +91,9 @@ class AccountFragment : BaseFragment<FragmentAccountBinding>(FragmentAccountBind
             val dialogFragment = LogoutFragment{
                 preferences.edit().clear().apply()
                 getKoin().setProperty("access_token","")
+                SecondHandApp.getSharedPreferences().edit().clear().apply()
                 // Using find nav still error
-//                findNavController().navigate(R.id.action_logoutFragment_to_mainFragment)
+                findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
 //                if (it.findNavController().currentDestination?.id == R.id.logoutFragment) {
 //                    it.findNavController().navigate(R.id.action_logoutFragment_to_mainFragment)
 //                }

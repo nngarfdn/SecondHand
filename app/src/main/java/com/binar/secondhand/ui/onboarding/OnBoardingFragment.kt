@@ -43,7 +43,7 @@ class OnBoardingFragment :
             }
             if (position == onBoardingData.size){
                 //pindah fragment
-                findNavController().navigate(R.id.action_onBoardingFragment_to_mainFragment)
+//                findNavController().navigate(R.id.action_onBoardingFragment_to_mainFragment)
             }
         }
         binding.vpOnboarding.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
