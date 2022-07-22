@@ -8,8 +8,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import com.binar.secondhand.databinding.FragmentSearchPageBinding
-import com.binar.secondhand.kel2.data.local.room.model.SearchHistoryEntity
-import com.binar.secondhand.kel2.data.resource.Status
+import com.binar.secondhand.data.local.room.model.SearchHistoryEntity
 import com.binar.secondhand.kel2.ui.base.BaseFragment
 import com.binar.secondhand.kel2.ui.search.page.SearchHistoryAdapter
 import com.binar.secondhand.kel2.ui.search.page.SearchPageViewModel

@@ -3,7 +3,7 @@ package com.binar.secondhand.kel2.application
 import android.app.Application
 import com.binar.secondhand.di.repositoryModule
 import com.binar.secondhand.di.viewModelModule
-import com.binar.secondhand.kel2.di.databaseModule
+import com.binar.secondhand.di.databaseModule
 import com.binar.secondhand.kel2.di.datastoreModule
 import com.binar.secondhand.kel2.di.networkModule
 import org.koin.android.ext.koin.androidContext

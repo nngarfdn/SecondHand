@@ -4,21 +4,31 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
+import androidx.paging.PagingData
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.binar.secondhand.R
 import com.binar.secondhand.databinding.FragmentHomeBinding
-import com.binar.secondhand.kel2.data.api.model.buyer.product.GetProductResponse
 import com.binar.secondhand.kel2.data.api.model.seller.banner.get.GetBannerResponse
 import com.binar.secondhand.kel2.data.resource.Status
 import com.binar.secondhand.kel2.ui.base.BaseFragment
 import com.binar.secondhand.kel2.ui.home.HomeBannerAdapter
 import com.binar.secondhand.kel2.ui.home.HomeProductAdapter
 import com.binar.secondhand.kel2.ui.home.HomeViewModel
+import com.binar.secondhand.kel2.ui.home.UiModel
 import com.binar.secondhand.kel2.ui.main.MainFragment
 import com.bumptech.glide.Glide
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayout
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.getKoin
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
@@ -53,6 +63,42 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         homeViewModel.getHomeBanner()
         homeViewModel.getHomeCategory()
 
+        val productAdapter = HomeProductAdapter {
+            val bundle = bundleOf("id_product" to it.id)
+            findNavController().navigate(R.id.action_mainFragment_to_detailProductFragment, bundle)
+        }
+        val productLoadStateAdapter = ProductLoadStateAdapter { productAdapter.retry() }
+
+        binding.bindList(
+            header = productLoadStateAdapter,
+            productAdapter = productAdapter,
+            pagingData = homeViewModel.getProducts()
+        )
+
+        binding.headerAppbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, verticalOffset ->
+            binding.swipeLayout.isEnabled = verticalOffset == 0
+        })
+
+        binding.swipeLayout.setOnRefreshListener {
+            val categoryId =
+                if (binding.tabHomeCategory.getTabAt(binding.tabHomeCategory.selectedTabPosition)
+                        ?.id == -1) {
+
+                    null
+
+                } else {
+                    binding.tabHomeCategory.getTabAt(binding.tabHomeCategory.selectedTabPosition)
+                        ?.id
+                }
+
+            binding.bindList(
+                header = productLoadStateAdapter,
+                productAdapter = productAdapter,
+                pagingData = homeViewModel.getProducts(categoryId)
+            )
+        }
+
+
         binding.etSearch.setOnClickListener {
             it.findNavController().navigate(R.id.action_mainFragment_to_searchPageFragment)
         }
@@ -60,10 +106,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         binding.tabHomeCategory.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 //do filter product here
-                if (tab?.id == -1){
-                    homeViewModel.getHomeProduct()
-                }else{
-                    homeViewModel.getHomeProduct(categoryId = tab?.id)
+                if (tab?.id == -1) {
+//                    homeViewModel.getHomeProduct()
+                    binding.bindList(
+                        header = productLoadStateAdapter,
+                        productAdapter = productAdapter,
+                        pagingData = homeViewModel.getProducts()
+                    )
+                } else {
+//                    homeViewModel.getHomeProduct(categoryId = tab?.id)
+                    binding.bindList(
+                        header = productLoadStateAdapter,
+                        productAdapter = productAdapter,
+                        pagingData = homeViewModel.getProducts(tab?.id)
+                    )
                 }
             }
 
@@ -157,36 +213,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             }
         }
 
-        homeViewModel.getHomeProductResponse.observe(viewLifecycleOwner) {
-            when (it.status) {
-
-                Status.LOADING -> {
-                    binding.pbHomeProduct.visibility = View.VISIBLE
-                }
-
-                Status.SUCCESS -> {
-
-                    binding.pbHomeProduct.visibility = View.GONE
-
-                    when (it.data?.code()) {
-                        200 -> {
-
-                            val data = it.data.body()
-                            showHomeProductList(data)
-
-                        }
-                        else ->{
-                            showSnackbar("Error occured: ${it.data?.code()}")
-                        }
-                    }
-                }
-
-                Status.ERROR -> {
-                    binding.pbHomeProduct.visibility = View.GONE
-                    showSnackbar("${it.message}")
-                }
-            }
-        }
         homeViewModel.authGetResponse.observe(viewLifecycleOwner) {
             when (it.status) {
 
@@ -262,21 +288,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
     }
 
-    private fun showHomeProductList(productResponse: GetProductResponse?) {
-        val adapter = HomeProductAdapter { it ->
-            //onclick item
-//            val action = HomeFragmentDirections.actionMainFragmentToDetailProductFragment()
-//            action.idProduct = it.id
-//            findNavController().navigate(action)
-            val bundle = bundleOf("id_product" to it.id)
-            findNavController().navigate(R.id.action_mainFragment_to_prodDetailFragment2,bundle)
-        }
-
-        adapter.submitList(productResponse)
-
-        binding.rvHomeProduct.adapter = adapter
-
-    }
 
 
     private fun setUpSearchBarListener() {
@@ -298,6 +309,77 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun searchProduct(query: String) {
         //TODO
+    }
+
+    private fun FragmentHomeBinding.bindList(
+        header: ProductLoadStateAdapter,
+        productAdapter: HomeProductAdapter,
+        pagingData: Flow<PagingData<UiModel.ProductItem>>
+    ) {
+
+        val footerAdapter = ProductLoadStateAdapter { productAdapter.retry() }
+        rvHomeProduct.adapter = productAdapter.withLoadStateHeaderAndFooter(
+            header = header,
+            footer = footerAdapter
+        )
+
+        lifecycleScope.launchWhenCreated {
+            productAdapter.loadStateFlow.collectLatest {
+                binding.swipeLayout.isRefreshing = it.refresh is LoadState.Loading
+            }
+        }
+
+        val gridLayoutManager = rvHomeProduct.layoutManager as GridLayoutManager
+        gridLayoutManager.spanSizeLookup =  object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return if ((position == productAdapter.itemCount  && footerAdapter.itemCount > 0) ||
+                    (position == productAdapter.itemCount  && header.itemCount > 0)) {
+                    2
+                } else {
+                    1
+                }
+            }
+        }
+
+        lifecycleScope.launchWhenCreated {
+            pagingData.collectLatest(productAdapter::submitData)
+        }
+
+        lifecycleScope.launch {
+            productAdapter.loadStateFlow.collect { loadState ->
+                // Show a retry header if there was an error refreshing, and items were previously
+                // cached OR default to the default prepend state
+                header.loadState = loadState.mediator
+                    ?.refresh
+                    ?.takeIf { it is LoadState.Error && productAdapter.itemCount > 0 }
+                    ?: loadState.prepend
+
+                val isListEmpty =
+                    loadState.refresh is LoadState.NotLoading && productAdapter.itemCount == 0
+                // show empty list
+//                emptyList.isVisible = isListEmpty
+                // Only show the list if refresh succeeds, either from the the local db or the remote.
+                rvHomeProduct.isVisible =
+                    loadState.source.refresh is LoadState.NotLoading
+                            || loadState.mediator?.refresh is LoadState.NotLoading
+                // Show loading spinner during initial load or refresh.
+                pbHomeProduct.isVisible = loadState.mediator?.refresh is LoadState.Loading
+                // Show the retry state if initial load or refresh fails.
+//                retryButton.isVisible = loadState.mediator?.refresh is LoadState.Error && productAdapter.itemCount == 0
+                // Toast on any error, regardless of whether it came from RemoteMediator or PagingSource
+                val errorState = loadState.source.append as? LoadState.Error
+                    ?: loadState.source.prepend as? LoadState.Error
+                    ?: loadState.append as? LoadState.Error
+                    ?: loadState.prepend as? LoadState.Error
+                errorState?.let {
+                    Toast.makeText(
+                        context,
+                        "\uD83D\uDE28 Wooops ${it.error}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        }
     }
 
 

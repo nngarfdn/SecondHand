@@ -11,16 +11,13 @@ import com.binar.secondhand.kel2.data.api.model.auth.register.PostRegisterRespon
 import com.binar.secondhand.kel2.data.api.model.auth.user.GetAuthResponse
 import com.binar.secondhand.kel2.data.api.model.auth.user.PutAuthResponse
 import com.binar.secondhand.kel2.data.api.model.buyer.order.get.GetOrderResponse
+import com.binar.secondhand.kel2.data.api.model.buyer.product.GetProductResponse
 import com.binar.secondhand.kel2.data.api.model.notification.GetNotificationResponse
 import com.binar.secondhand.kel2.data.api.model.seller.banner.get.GetBannerResponse
 import com.binar.secondhand.kel2.data.api.model.seller.category.get.GetCategoryResponse
-import com.binar.secondhand.kel2.data.api.model.buyer.product.GetProductResponse
 import com.binar.secondhand.kel2.data.api.model.buyer.productid.GetProductIdResponse
 import com.binar.secondhand.kel2.data.api.model.buyer.productid.UserProduct
 import com.binar.secondhand.kel2.data.api.model.seller.product.get.GetSellerProductResponse
-import com.binar.secondhand.kel2.data.api.model.seller.product.id.put.PutProductIdRequest
-import com.binar.secondhand.kel2.data.api.model.seller.product.id.put.PutProductIdResponse
-import com.binar.secondhand.kel2.data.api.model.seller.product.post.PostProductRequest
 import com.binar.secondhand.kel2.data.api.model.seller.product.post.PostProductResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -97,7 +94,9 @@ interface ApiService {
     suspend fun getProduct(
         @Query("status") status: String? = null,
         @Query("category_id") categoryId: Int? = null,
-        @Query("search") searchKeyword: String? = null
+        @Query("search") searchKeyword: String? = null,
+        @Query("page") page: Int=1,
+        @Query("per_page") itemsPerPage: Int=20
     ): Response<GetProductResponse>
 
     @GET("seller/category")

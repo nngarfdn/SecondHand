@@ -42,12 +42,17 @@ class ApiHelper(val apiService: ApiService) {
     suspend fun getProduct(
         status: String? = null,
         categoryId: Int? = null,
-        searchKeyword: String? = null
+        searchKeyword: String? = null,
+        page: Int=1,
+        itemsPerPage: Int=20
     ) = apiService.getProduct(
         status,
         categoryId,
-        searchKeyword
+        searchKeyword,
+        page,
+        itemsPerPage
     )
+
     suspend fun getProductDetail(productId: Int) = apiService.getProductDetail(productId)
     suspend fun getUserProfile(userId: Int) = apiService.getUserProfile(userId)
     suspend fun getBuyerOrder() = apiService.getBuyerOrder()

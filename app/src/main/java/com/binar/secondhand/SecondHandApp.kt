@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.binar.secondhand.di.repositoryModule
 import com.binar.secondhand.di.viewModelModule
-import com.binar.secondhand.kel2.di.databaseModule
+import com.binar.secondhand.di.databaseModule
 import com.binar.secondhand.kel2.di.datastoreModule
 import com.binar.secondhand.kel2.di.networkModule
 import com.google.firebase.FirebaseApp

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.secondhand.databinding.SearchHistoryListLayoutBinding
-import com.binar.secondhand.kel2.data.local.room.model.SearchHistoryEntity
+import com.binar.secondhand.data.local.room.model.SearchHistoryEntity
 
 class SearchHistoryAdapter(private val onClick: (SearchHistoryEntity) -> Unit) :
     ListAdapter<SearchHistoryEntity, SearchHistoryAdapter.ViewHolder>(CommunityComparator()) {
