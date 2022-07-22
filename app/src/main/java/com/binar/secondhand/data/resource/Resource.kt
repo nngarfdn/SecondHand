@@ -1,4 +1,4 @@
-package com.binar.secondhand.kel2.data.resource
+package com.binar.secondhand.data.resource
 
 data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
     companion object{

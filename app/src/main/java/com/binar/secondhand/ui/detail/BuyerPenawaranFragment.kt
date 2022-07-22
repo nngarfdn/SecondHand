@@ -1,4 +1,4 @@
-package com.binar.secondhand.kel2.ui.detail
+package com.binar.secondhand.ui.detail
 
 
 import android.annotation.SuppressLint
@@ -13,8 +13,8 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.binar.secondhand.R
 import com.binar.secondhand.databinding.FragmentBuyerPenawaranBinding
-import com.binar.secondhand.kel2.data.api.model.buyer.order.post.PostOrderRequest
-import com.binar.secondhand.kel2.data.resource.Status
+import com.binar.secondhand.data.api.model.buyer.order.post.PostOrderRequest
+import com.binar.secondhand.data.resource.Status
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.koin.android.ext.android.getKoin

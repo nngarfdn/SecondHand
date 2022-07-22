@@ -25,7 +25,7 @@ import com.binar.secondhand.data.source.remote.network.Resource
 import com.binar.secondhand.data.source.remote.request.AddProductRequest
 import com.binar.secondhand.data.source.remote.request.EditProfileRequest
 import com.binar.secondhand.databinding.ActivityCompleteAccountBinding
-import com.binar.secondhand.kel2.ui.profile.ProfileViewModel
+import com.binar.secondhand.ui.profile.ProfileViewModel
 import com.binar.secondhand.ui.addproduct.AddProductActivity
 import com.binar.secondhand.ui.productlist.ProductListViewModel
 import com.binar.secondhand.utils.RealPathUtil

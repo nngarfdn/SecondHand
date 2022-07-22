@@ -1,12 +1,12 @@
-package com.binar.secondhand.kel2.data.repository
+package com.binar.secondhand.data.repository
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.binar.secondhand.data.source.remote.ProductRemoteMediator
-import com.binar.secondhand.kel2.data.api.model.buyer.product.GetProductResponseItem
-import com.binar.secondhand.kel2.data.api.service.ApiHelper
+import com.binar.secondhand.data.api.model.buyer.product.GetProductResponseItem
+import com.binar.secondhand.data.api.service.ApiHelper
 import com.binar.secondhand.data.local.room.database.AppDatabase
 import kotlinx.coroutines.flow.Flow
 

@@ -8,14 +8,11 @@ import com.binar.secondhand.data.source.remote.request.AddProductRequest
 import com.binar.secondhand.data.source.remote.request.EditProfileRequest
 import com.binar.secondhand.data.source.remote.response.AddProductResponse
 import com.binar.secondhand.data.source.remote.response.GetAllCategoryResponseItem
-import com.binar.secondhand.kel2.data.api.model.auth.password.PutPassRequest
-import com.binar.secondhand.kel2.data.api.model.auth.user.PutAuthRequest
-import com.binar.secondhand.kel2.data.api.service.ApiHelper
+import com.binar.secondhand.data.api.model.auth.password.PutPassRequest
+import com.binar.secondhand.data.api.service.ApiHelper
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import com.binar.secondhand.kel2.data.api.model.auth.register.PostRegisterRequest
-import com.binar.secondhand.kel2.data.api.model.buyer.order.post.PostOrderRequest
-import com.binar.secondhand.kel2.data.api.model.seller.product.post.PostProductRequest
+import com.binar.secondhand.data.api.model.buyer.order.post.PostOrderRequest
 import com.binar.secondhand.utils.Constant
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody

@@ -1,4 +1,4 @@
-package com.binar.secondhand.kel2.ui.wishlist
+package com.binar.secondhand.ui.wishlist
 
 import android.os.Bundle
 import android.view.LayoutInflater

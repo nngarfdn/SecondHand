@@ -1,19 +1,17 @@
 package com.binar.secondhand.ui.login
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.binar.secondhand.MainActivity
 import com.binar.secondhand.R
 import com.binar.secondhand.SecondHandApp
 import com.binar.secondhand.databinding.FragmentLoginBinding
-import com.binar.secondhand.kel2.data.api.model.auth.login.PostLoginRequest
-import com.binar.secondhand.kel2.data.resource.Status
-import com.binar.secondhand.kel2.ui.base.BaseFragment
-import com.binar.secondhand.kel2.ui.login.LoginViewModel
+import com.binar.secondhand.data.api.model.auth.login.PostLoginRequest
+import com.binar.secondhand.data.resource.Status
+import com.binar.secondhand.ui.base.BaseFragment
+import com.binar.secondhand.ui.login.LoginViewModel
 import com.binar.secondhand.utils.Constant
 import org.koin.android.ext.android.getKoin
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -102,7 +100,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                             }.apply()
 
                             findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
-//                            startActivity(Intent(context, com.binar.secondhand.kel2.ui.MainActivity::class.java))
+//                            startActivity(Intent(context, com.binar.secondhand.ui.MainActivity::class.java))
                         }
 
                         401 -> {

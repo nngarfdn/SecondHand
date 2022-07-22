@@ -1,16 +1,16 @@
 package com.binar.secondhand.di
 
 
-import com.binar.secondhand.kel2.ui.account.AccountViewModel
-import com.binar.secondhand.kel2.ui.detail.BuyerPenawaranViewModel
-import com.binar.secondhand.kel2.ui.home.HomeViewModel
-import com.binar.secondhand.kel2.ui.lengkapi.SellerDetailProductViewModel
-import com.binar.secondhand.kel2.ui.login.LoginViewModel
-import com.binar.secondhand.kel2.ui.notification.NotificationViewModel
-import com.binar.secondhand.kel2.ui.pass.ChangePassViewModel
-import com.binar.secondhand.kel2.ui.preview.PreviewViewModel
-import com.binar.secondhand.kel2.ui.profile.ProfileViewModel
-import com.binar.secondhand.kel2.ui.sale.main.ProductSaleListViewModel
+import com.binar.secondhand.ui.account.AccountViewModel
+import com.binar.secondhand.ui.detail.BuyerPenawaranViewModel
+import com.binar.secondhand.ui.home.HomeViewModel
+import com.binar.secondhand.ui.lengkapi.SellerDetailProductViewModel
+import com.binar.secondhand.ui.login.LoginViewModel
+import com.binar.secondhand.ui.notification.NotificationViewModel
+import com.binar.secondhand.ui.pass.ChangePassViewModel
+import com.binar.secondhand.ui.preview.PreviewViewModel
+import com.binar.secondhand.ui.profile.ProfileViewModel
+import com.binar.secondhand.ui.sale.main.ProductSaleListViewModel
 import com.binar.secondhand.ui.addproduct.AddProductViewModel
 import com.binar.secondhand.ui.akun.AkunViewModel
 import com.binar.secondhand.ui.auth.login.LoginUserViewModel

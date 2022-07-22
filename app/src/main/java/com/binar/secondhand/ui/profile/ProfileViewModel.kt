@@ -1,14 +1,14 @@
-package com.binar.secondhand.kel2.ui.profile
+package com.binar.secondhand.ui.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.binar.secondhand.kel2.data.api.model.auth.user.GetAuthResponse
-import com.binar.secondhand.kel2.data.api.model.auth.user.PutAuthResponse
+import com.binar.secondhand.data.api.model.auth.user.GetAuthResponse
+import com.binar.secondhand.data.api.model.auth.user.PutAuthResponse
 import com.binar.secondhand.data.repository.Repository
 import com.binar.secondhand.data.source.remote.request.EditProfileRequest
-import com.binar.secondhand.kel2.data.resource.Resource
+import com.binar.secondhand.data.resource.Resource
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 import okhttp3.RequestBody

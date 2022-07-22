@@ -1,10 +1,10 @@
-package com.binar.secondhand.kel2.ui.bidder
+package com.binar.secondhand.ui.bidder
 
 import android.os.Bundle
 import android.view.View
 import com.binar.secondhand.databinding.FragmentBidderBinding
 
-import com.binar.secondhand.kel2.ui.base.BaseFragment
+import com.binar.secondhand.ui.base.BaseFragment
 
 class BidderFragment : BaseFragment<FragmentBidderBinding>(FragmentBidderBinding::inflate) {
 

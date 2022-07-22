@@ -9,9 +9,8 @@ import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import com.binar.secondhand.databinding.FragmentSearchPageBinding
 import com.binar.secondhand.data.local.room.model.SearchHistoryEntity
-import com.binar.secondhand.kel2.ui.base.BaseFragment
-import com.binar.secondhand.kel2.ui.search.page.SearchHistoryAdapter
-import com.binar.secondhand.kel2.ui.search.page.SearchPageViewModel
+import com.binar.secondhand.ui.base.BaseFragment
+import com.binar.secondhand.ui.search.page.SearchHistoryAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchPageFragment :

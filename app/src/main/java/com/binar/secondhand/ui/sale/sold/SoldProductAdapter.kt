@@ -1,4 +1,4 @@
-package com.binar.secondhand.kel2.ui.sale.sold
+package com.binar.secondhand.ui.sale.sold
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.secondhand.databinding.ProductSaleListLayoutBinding
-import com.binar.secondhand.kel2.data.api.model.seller.product.get.GetProductResponseItem
+import com.binar.secondhand.data.api.model.seller.product.get.GetProductResponseItem
 import com.bumptech.glide.Glide
 import java.text.DecimalFormat
 import java.text.NumberFormat

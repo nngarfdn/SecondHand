@@ -1,4 +1,4 @@
-package com.binar.secondhand.kel2.ui.home
+package com.binar.secondhand.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.secondhand.databinding.HomeBannerListLayoutBinding
-import com.binar.secondhand.kel2.data.api.model.seller.banner.get.GetBannerResponseItem
+import com.binar.secondhand.data.api.model.seller.banner.get.GetBannerResponseItem
 
 import com.bumptech.glide.Glide
 

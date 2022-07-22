@@ -8,9 +8,9 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.binar.secondhand.R
 import com.binar.secondhand.databinding.FragmentRegisterBinding
-import com.binar.secondhand.kel2.data.api.model.auth.register.PostRegisterRequest
-import com.binar.secondhand.kel2.data.resource.Status
-import com.binar.secondhand.kel2.ui.base.BaseFragment
+import com.binar.secondhand.data.api.model.auth.register.PostRegisterRequest
+import com.binar.secondhand.data.resource.Status
+import com.binar.secondhand.ui.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterBinding::inflate) {

@@ -29,7 +29,7 @@
         <item name="android:background">@drawable/rounded_dialog</item>
     </style>
 
-    <style name="Theme.SecondhandKel2.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Secondhand.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.SecondhandKel2.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.Secondhand.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -1,17 +1,17 @@
-package com.binar.secondhand.kel2.ui.home
+package com.binar.secondhand.ui.home
 
 import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.insertSeparators
 import androidx.paging.map
-import com.binar.secondhand.kel2.data.api.model.auth.user.GetAuthResponse
-import com.binar.secondhand.kel2.data.api.model.seller.banner.get.GetBannerResponse
-import com.binar.secondhand.kel2.data.api.model.seller.category.get.GetCategoryResponse
-import com.binar.secondhand.kel2.data.api.model.buyer.product.GetProductResponse
-import com.binar.secondhand.kel2.data.api.model.buyer.product.GetProductResponseItem
-import com.binar.secondhand.kel2.data.repository.HomeRepository
-import com.binar.secondhand.kel2.data.resource.Resource
+import com.binar.secondhand.data.api.model.auth.user.GetAuthResponse
+import com.binar.secondhand.data.api.model.seller.banner.get.GetBannerResponse
+import com.binar.secondhand.data.api.model.seller.category.get.GetCategoryResponse
+import com.binar.secondhand.data.api.model.buyer.product.GetProductResponse
+import com.binar.secondhand.data.api.model.buyer.product.GetProductResponseItem
+import com.binar.secondhand.data.repository.HomeRepository
+import com.binar.secondhand.data.resource.Resource
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import retrofit2.Response

@@ -6,11 +6,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.binar.secondhand.R
 import com.binar.secondhand.databinding.FragmentSearchBinding
-import com.binar.secondhand.kel2.data.api.model.buyer.product.GetProductResponse
-import com.binar.secondhand.kel2.data.resource.Status
-import com.binar.secondhand.kel2.ui.base.BaseFragment
-import com.binar.secondhand.kel2.ui.search.result.SearchAdapter
-import com.binar.secondhand.kel2.ui.search.result.SearchViewModel
+import com.binar.secondhand.data.api.model.buyer.product.GetProductResponse
+import com.binar.secondhand.data.resource.Status
+import com.binar.secondhand.ui.base.BaseFragment
+import com.binar.secondhand.ui.search.result.SearchAdapter
+import com.binar.secondhand.ui.search.result.SearchViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding::inflate) {

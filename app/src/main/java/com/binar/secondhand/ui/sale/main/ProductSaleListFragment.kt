@@ -9,11 +9,11 @@ import androidx.navigation.fragment.findNavController
 import com.binar.secondhand.R
 import com.binar.secondhand.SecondHandApp
 import com.binar.secondhand.databinding.FragmentProductSaleListBinding
-import com.binar.secondhand.kel2.data.resource.Status
-import com.binar.secondhand.kel2.ui.base.BaseFragment
-import com.binar.secondhand.kel2.ui.main.MainFragment
-import com.binar.secondhand.kel2.ui.sale.main.ProductSaleListViewModel
-import com.binar.secondhand.kel2.ui.sale.main.ProductViewPagerAdapter
+import com.binar.secondhand.data.resource.Status
+import com.binar.secondhand.ui.base.BaseFragment
+import com.binar.secondhand.ui.main.MainFragment
+import com.binar.secondhand.ui.sale.main.ProductSaleListViewModel
+import com.binar.secondhand.ui.sale.main.ProductViewPagerAdapter
 import com.binar.secondhand.ui.profile.CompleteAccountActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop

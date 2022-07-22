@@ -1,4 +1,4 @@
-package com.binar.secondhand.kel2.data.api.model.auth.register
+package com.binar.secondhand.data.api.model.auth.register
 
 import com.google.gson.annotations.SerializedName
 

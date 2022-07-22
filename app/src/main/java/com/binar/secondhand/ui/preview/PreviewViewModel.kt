@@ -1,13 +1,13 @@
-package com.binar.secondhand.kel2.ui.preview
+package com.binar.secondhand.ui.preview
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.binar.secondhand.kel2.data.api.model.auth.user.GetAuthResponse
-import com.binar.secondhand.kel2.data.api.model.seller.product.post.PostProductResponse
+import com.binar.secondhand.data.api.model.auth.user.GetAuthResponse
+import com.binar.secondhand.data.api.model.seller.product.post.PostProductResponse
 import com.binar.secondhand.data.repository.Repository
-import com.binar.secondhand.kel2.data.resource.Resource
+import com.binar.secondhand.data.resource.Resource
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 import okhttp3.RequestBody

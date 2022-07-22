@@ -10,9 +10,9 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import com.binar.secondhand.R
 import com.binar.secondhand.databinding.FragmentProfileBinding
-import com.binar.secondhand.kel2.data.resource.Status
-import com.binar.secondhand.kel2.ui.base.BaseFragment
-import com.binar.secondhand.kel2.ui.profile.ProfileViewModel
+import com.binar.secondhand.data.resource.Status
+import com.binar.secondhand.ui.base.BaseFragment
+import com.binar.secondhand.ui.profile.ProfileViewModel
 
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop

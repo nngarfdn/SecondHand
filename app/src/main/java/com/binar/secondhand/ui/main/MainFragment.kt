@@ -1,10 +1,10 @@
-package com.binar.secondhand.kel2.ui.main
+package com.binar.secondhand.ui.main
 
 import android.os.Bundle
 import android.view.View
 import com.binar.secondhand.R
 import com.binar.secondhand.databinding.FragmentMainBinding
-import com.binar.secondhand.kel2.ui.base.BaseFragment
+import com.binar.secondhand.ui.base.BaseFragment
 import com.binar.secondhand.ui.home.HomeFragment
 import com.binar.secondhand.ui.notification.NotificationFragment
 import com.binar.secondhand.ui.sale.main.ProductSaleListFragment

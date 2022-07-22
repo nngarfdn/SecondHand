@@ -1,9 +1,9 @@
-package com.binar.secondhand.kel2.data.api.service
+package com.binar.secondhand.data.api.service
 
-import com.binar.secondhand.kel2.data.api.model.auth.login.PostLoginRequest
-import com.binar.secondhand.kel2.data.api.model.auth.password.PutPassRequest
-import com.binar.secondhand.kel2.data.api.model.auth.register.PostRegisterRequest
-import com.binar.secondhand.kel2.data.api.model.buyer.order.post.PostOrderRequest
+import com.binar.secondhand.data.api.model.auth.login.PostLoginRequest
+import com.binar.secondhand.data.api.model.auth.password.PutPassRequest
+import com.binar.secondhand.data.api.model.auth.register.PostRegisterRequest
+import com.binar.secondhand.data.api.model.buyer.order.post.PostOrderRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 

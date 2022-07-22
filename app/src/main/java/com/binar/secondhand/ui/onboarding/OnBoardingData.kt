@@ -1,4 +1,4 @@
-package com.binar.secondhand.kel2.ui.onboarding
+package com.binar.secondhand.ui.onboarding
 
 class OnBoardingData(var desc : String, val img : Int) {
 }

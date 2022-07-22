@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.View
 import com.binar.secondhand.R
 import com.binar.secondhand.databinding.FragmentPreviewBinding
-import com.binar.secondhand.kel2.data.resource.Status
-import com.binar.secondhand.kel2.ui.base.BaseFragment
-import com.binar.secondhand.kel2.ui.preview.PreviewViewModel
+import com.binar.secondhand.data.resource.Status
+import com.binar.secondhand.ui.base.BaseFragment
+import com.binar.secondhand.ui.preview.PreviewViewModel
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel

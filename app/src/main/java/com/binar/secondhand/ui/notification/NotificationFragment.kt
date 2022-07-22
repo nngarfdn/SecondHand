@@ -8,11 +8,11 @@ import androidx.navigation.fragment.findNavController
 import com.binar.secondhand.R
 import com.binar.secondhand.SecondHandApp
 import com.binar.secondhand.databinding.FragmentNotificationBinding
-import com.binar.secondhand.kel2.data.api.model.notification.GetNotificationResponse
-import com.binar.secondhand.kel2.data.resource.Status
-import com.binar.secondhand.kel2.ui.base.BaseFragment
-import com.binar.secondhand.kel2.ui.main.MainFragment
-import com.binar.secondhand.kel2.ui.notification.NotificationViewModel
+import com.binar.secondhand.data.api.model.notification.GetNotificationResponse
+import com.binar.secondhand.data.resource.Status
+import com.binar.secondhand.ui.base.BaseFragment
+import com.binar.secondhand.ui.main.MainFragment
+import com.binar.secondhand.ui.notification.NotificationViewModel
 import com.binar.secondhand.utils.Constant
 import org.koin.android.ext.android.getKoin
 import org.koin.androidx.viewmodel.ext.android.viewModel

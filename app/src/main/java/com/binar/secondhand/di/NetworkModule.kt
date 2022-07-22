@@ -1,8 +1,8 @@
-package com.binar.secondhand.kel2.di
+package com.binar.secondhand.di
 
 import com.binar.secondhand.SecondHandApp
-import com.binar.secondhand.kel2.data.api.service.ApiHelper
-import com.binar.secondhand.kel2.data.api.service.ApiService
+import com.binar.secondhand.data.api.service.ApiHelper
+import com.binar.secondhand.data.api.service.ApiService
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import okhttp3.OkHttpClient

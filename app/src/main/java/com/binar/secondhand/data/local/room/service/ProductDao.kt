@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.binar.secondhand.kel2.data.api.model.buyer.product.GetProductResponseItem
+import com.binar.secondhand.data.api.model.buyer.product.GetProductResponseItem
 
 @Dao
 interface ProductDao {

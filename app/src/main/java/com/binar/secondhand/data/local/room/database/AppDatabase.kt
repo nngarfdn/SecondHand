@@ -6,7 +6,7 @@ import com.binar.secondhand.data.local.room.model.RemoteKeys
 import com.binar.secondhand.data.local.room.service.ProductDao
 import com.binar.secondhand.data.local.room.service.RemoteKeysDao
 import com.binar.secondhand.data.local.room.service.SearchHistoryDao
-import com.binar.secondhand.kel2.data.api.model.buyer.product.GetProductResponseItem
+import com.binar.secondhand.data.api.model.buyer.product.GetProductResponseItem
 import com.binar.secondhand.data.local.room.model.SearchHistoryEntity
 
 @Database(

@@ -1,8 +1,8 @@
-package com.binar.secondhand.kel2.data.local.room.model
+package com.binar.secondhand.data.local.room.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.binar.secondhand.kel2.data.api.model.buyer.product.Category
+import com.binar.secondhand.data.api.model.buyer.product.Category
 import com.google.gson.annotations.SerializedName
 
 @Entity

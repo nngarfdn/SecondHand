@@ -1,8 +1,8 @@
-package com.binar.secondhand.kel2.ui
+package com.binar.secondhand.ui
 
 import android.os.Bundle
 import com.binar.secondhand.databinding.ActivityMainBinding
-import com.binar.secondhand.kel2.ui.base.BaseActivity
+import com.binar.secondhand.ui.base.BaseActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 

@@ -1,24 +1,24 @@
-package com.binar.secondhand.kel2.data.api.service
+package com.binar.secondhand.data.api.service
 
-import com.binar.secondhand.kel2.data.api.model.buyer.order.post.PostOrderRequest
-import com.binar.secondhand.kel2.data.api.model.buyer.order.post.PostOrderResponse
-import com.binar.secondhand.kel2.data.api.model.auth.login.PostLoginRequest
-import com.binar.secondhand.kel2.data.api.model.auth.login.PostLoginResponse
-import com.binar.secondhand.kel2.data.api.model.auth.password.PutPassRequest
-import com.binar.secondhand.kel2.data.api.model.auth.password.PutPassResponse
-import com.binar.secondhand.kel2.data.api.model.auth.register.PostRegisterRequest
-import com.binar.secondhand.kel2.data.api.model.auth.register.PostRegisterResponse
-import com.binar.secondhand.kel2.data.api.model.auth.user.GetAuthResponse
-import com.binar.secondhand.kel2.data.api.model.auth.user.PutAuthResponse
-import com.binar.secondhand.kel2.data.api.model.buyer.order.get.GetOrderResponse
-import com.binar.secondhand.kel2.data.api.model.buyer.product.GetProductResponse
-import com.binar.secondhand.kel2.data.api.model.notification.GetNotificationResponse
-import com.binar.secondhand.kel2.data.api.model.seller.banner.get.GetBannerResponse
-import com.binar.secondhand.kel2.data.api.model.seller.category.get.GetCategoryResponse
-import com.binar.secondhand.kel2.data.api.model.buyer.productid.GetProductIdResponse
-import com.binar.secondhand.kel2.data.api.model.buyer.productid.UserProduct
-import com.binar.secondhand.kel2.data.api.model.seller.product.get.GetSellerProductResponse
-import com.binar.secondhand.kel2.data.api.model.seller.product.post.PostProductResponse
+import com.binar.secondhand.data.api.model.buyer.order.post.PostOrderRequest
+import com.binar.secondhand.data.api.model.buyer.order.post.PostOrderResponse
+import com.binar.secondhand.data.api.model.auth.login.PostLoginRequest
+import com.binar.secondhand.data.api.model.auth.login.PostLoginResponse
+import com.binar.secondhand.data.api.model.auth.password.PutPassRequest
+import com.binar.secondhand.data.api.model.auth.password.PutPassResponse
+import com.binar.secondhand.data.api.model.auth.register.PostRegisterRequest
+import com.binar.secondhand.data.api.model.auth.register.PostRegisterResponse
+import com.binar.secondhand.data.api.model.auth.user.GetAuthResponse
+import com.binar.secondhand.data.api.model.auth.user.PutAuthResponse
+import com.binar.secondhand.data.api.model.buyer.order.get.GetOrderResponse
+import com.binar.secondhand.data.api.model.buyer.product.GetProductResponse
+import com.binar.secondhand.data.api.model.notification.GetNotificationResponse
+import com.binar.secondhand.data.api.model.seller.banner.get.GetBannerResponse
+import com.binar.secondhand.data.api.model.seller.category.get.GetCategoryResponse
+import com.binar.secondhand.data.api.model.buyer.productid.GetProductIdResponse
+import com.binar.secondhand.data.api.model.buyer.productid.UserProduct
+import com.binar.secondhand.data.api.model.seller.product.get.GetSellerProductResponse
+import com.binar.secondhand.data.api.model.seller.product.post.PostProductResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -107,5 +107,5 @@ interface ApiService {
     suspend fun getSellerProduct():Response<GetSellerProductResponse>
 
     @GET("seller/order")
-    suspend fun getSellerOrder(): Response<com.binar.secondhand.kel2.data.api.model.seller.order.GetOrderResponse>
+    suspend fun getSellerOrder(): Response<com.binar.secondhand.data.api.model.seller.order.GetOrderResponse>
 }

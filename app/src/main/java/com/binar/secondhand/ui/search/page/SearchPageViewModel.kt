@@ -1,4 +1,4 @@
-package com.binar.secondhand.kel2.ui.search.page
+package com.binar.secondhand.ui.search.page
 
 import androidx.lifecycle.ViewModel
 

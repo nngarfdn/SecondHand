@@ -1,4 +1,4 @@
-package com.binar.secondhand.kel2.ui.onboarding
+package com.binar.secondhand.ui.onboarding
 
 import android.os.Bundle
 import android.view.View
@@ -6,7 +6,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.binar.secondhand.R
 import com.binar.secondhand.databinding.FragmentOnBoardingBinding
-import com.binar.secondhand.kel2.ui.base.BaseFragment
+import com.binar.secondhand.ui.base.BaseFragment
 import com.binar.secondhand.ui.onboarding.OnBoardingViewPagerAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout

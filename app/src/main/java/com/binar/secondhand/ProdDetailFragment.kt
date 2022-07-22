@@ -12,9 +12,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.binar.secondhand.databinding.DetailProductBinding
 import com.binar.secondhand.databinding.FragmentProdDetailBinding
-import com.binar.secondhand.kel2.data.resource.Status
-import com.binar.secondhand.kel2.ui.base.BaseFragment
-import com.binar.secondhand.kel2.ui.detail.BuyerPenawaranFragment
+import com.binar.secondhand.data.resource.Status
+import com.binar.secondhand.ui.base.BaseFragment
+import com.binar.secondhand.ui.detail.BuyerPenawaranFragment
 import com.binar.secondhand.ui.detail.DetailProductViewModel
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar

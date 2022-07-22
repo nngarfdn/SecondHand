@@ -1,10 +1,10 @@
-package com.binar.secondhand.kel2.ui.sale.main
+package com.binar.secondhand.ui.sale.main
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.binar.secondhand.kel2.ui.sale.bid.BidProductFragment
+import com.binar.secondhand.ui.sale.bid.BidProductFragment
 import com.binar.secondhand.ui.sale.product.SellerProductFragment
-import com.binar.secondhand.kel2.ui.sale.sold.SoldProductFragment
+import com.binar.secondhand.ui.sale.sold.SoldProductFragment
 
 class ProductViewPagerAdapter(fragment: Fragment): FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int {

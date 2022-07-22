@@ -1,4 +1,4 @@
-package com.binar.secondhand.kel2.data.api.model.seller.product.get
+package com.binar.secondhand.data.api.model.seller.product.get
 
 
 import com.google.gson.annotations.SerializedName

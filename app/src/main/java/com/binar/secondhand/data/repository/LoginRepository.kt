@@ -1,8 +1,7 @@
-package com.binar.secondhand.kel2.data.repository
+package com.binar.secondhand.data.repository
 
-import com.binar.secondhand.kel2.data.api.model.auth.login.PostLoginRequest
-import com.binar.secondhand.kel2.data.api.model.auth.register.PostRegisterRequest
-import com.binar.secondhand.kel2.data.api.service.ApiHelper
+import com.binar.secondhand.data.api.model.auth.login.PostLoginRequest
+import com.binar.secondhand.data.api.service.ApiHelper
 
 class LoginRepository(private val apiHelper: ApiHelper) {
 

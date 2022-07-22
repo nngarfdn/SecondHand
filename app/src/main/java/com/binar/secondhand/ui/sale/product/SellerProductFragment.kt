@@ -5,11 +5,11 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.binar.secondhand.R
 import com.binar.secondhand.databinding.FragmentSellerProductBinding
-import com.binar.secondhand.kel2.data.api.model.seller.product.get.GetSellerProductResponse
-import com.binar.secondhand.kel2.data.resource.Status
-import com.binar.secondhand.kel2.ui.base.BaseFragment
-import com.binar.secondhand.kel2.ui.sale.main.ProductSaleListViewModel
-import com.binar.secondhand.kel2.ui.sale.product.SellerProductAdapter
+import com.binar.secondhand.data.api.model.seller.product.get.GetSellerProductResponse
+import com.binar.secondhand.data.resource.Status
+import com.binar.secondhand.ui.base.BaseFragment
+import com.binar.secondhand.ui.sale.main.ProductSaleListViewModel
+import com.binar.secondhand.ui.sale.product.SellerProductAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 

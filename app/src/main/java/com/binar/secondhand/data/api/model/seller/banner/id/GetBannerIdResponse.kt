@@ -1,4 +1,4 @@
-package com.binar.secondhand.kel2.data.api.model.seller.banner.id
+package com.binar.secondhand.data.api.model.seller.banner.id
 
 
 import com.google.gson.annotations.SerializedName

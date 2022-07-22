@@ -1,12 +1,12 @@
-package com.binar.secondhand.kel2.ui.sale.sold
+package com.binar.secondhand.ui.sale.sold
 
 import android.os.Bundle
 import android.view.View
 import com.binar.secondhand.databinding.FragmentSoldProductBinding
-import com.binar.secondhand.kel2.data.api.model.seller.product.get.GetSellerProductResponse
-import com.binar.secondhand.kel2.data.resource.Status
-import com.binar.secondhand.kel2.ui.base.BaseFragment
-import com.binar.secondhand.kel2.ui.sale.main.ProductSaleListViewModel
+import com.binar.secondhand.data.api.model.seller.product.get.GetSellerProductResponse
+import com.binar.secondhand.data.resource.Status
+import com.binar.secondhand.ui.base.BaseFragment
+import com.binar.secondhand.ui.sale.main.ProductSaleListViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SoldProductFragment :

@@ -29,11 +29,11 @@ import com.binar.secondhand.data.source.remote.network.Resource
 import com.binar.secondhand.data.source.remote.request.AddProductRequest
 import com.binar.secondhand.data.source.remote.response.GetAllCategoryResponseItem
 import com.binar.secondhand.databinding.FragmentSellerDetailProductBinding
-import com.binar.secondhand.kel2.data.resource.Status
-import com.binar.secondhand.kel2.ui.base.BaseFragment
-import com.binar.secondhand.kel2.ui.detail.BuyerPenawaranFragment
-import com.binar.secondhand.kel2.ui.lengkapi.SellerDetailProductViewModel
-import com.binar.secondhand.kel2.ui.main.MainFragment
+import com.binar.secondhand.data.resource.Status
+import com.binar.secondhand.ui.base.BaseFragment
+import com.binar.secondhand.ui.detail.BuyerPenawaranFragment
+import com.binar.secondhand.ui.lengkapi.SellerDetailProductViewModel
+import com.binar.secondhand.ui.main.MainFragment
 import com.binar.secondhand.ui.addproduct.RadioListBottomSheet
 import com.binar.secondhand.utils.Constant
 import com.binar.secondhand.utils.RealPathUtil
