@@ -13,6 +13,8 @@ import com.binar.secondhand.data.api.service.ApiHelper
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import com.binar.secondhand.data.api.model.buyer.order.post.PostOrderRequest
+import com.binar.secondhand.data.api.model.seller.product.get.RequestApproveOrder
+import com.binar.secondhand.data.api.model.seller.product.get.RequestUpdateStatusProduk
 import com.binar.secondhand.utils.Constant
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -39,8 +41,10 @@ class Repository(private val apiHelper: ApiHelper) {
         image
     )
 
+    suspend fun getSellerOrderById(token: String,orderId: Int) = apiHelper.getSellerOrderById(token,orderId)
+    suspend fun updateStatusProduk(token: String,produkId: Int, requestUpdateStatusProduk: RequestUpdateStatusProduk) = apiHelper.updateStatusProduk(token, produkId, requestUpdateStatusProduk)
+    suspend fun approveOrder(token: String, id: Int, requestApproveOrder: RequestApproveOrder) = apiHelper.approveOrder(token, id, requestApproveOrder)
     suspend fun putPass(request: PutPassRequest) = apiHelper.putPass(request)
-
     suspend fun getNotification() = apiHelper.getNotification()
     suspend fun getBuyerOrder() = apiHelper.getBuyerOrder()
     suspend fun getProductId(id: Int) = apiHelper.getProductId(id)

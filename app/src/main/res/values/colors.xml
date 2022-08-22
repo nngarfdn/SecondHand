@@ -26,4 +26,8 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="primary_60">#3C74D1</color>
     <color name="blue_redesign">#2957AF</color>
+    <color name="light_grey">#D0D0D0</color>
+    <color name="dark_grey">#dddddd</color>
+    <color name="dark_blue">#06283D</color>
+    <color name="succes">#73CA5C</color>
 </resources>

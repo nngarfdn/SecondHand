@@ -4,6 +4,8 @@ import com.binar.secondhand.data.api.model.auth.login.PostLoginRequest
 import com.binar.secondhand.data.api.model.auth.password.PutPassRequest
 import com.binar.secondhand.data.api.model.auth.register.PostRegisterRequest
 import com.binar.secondhand.data.api.model.buyer.order.post.PostOrderRequest
+import com.binar.secondhand.data.api.model.seller.product.get.RequestApproveOrder
+import com.binar.secondhand.data.api.model.seller.product.get.RequestUpdateStatusProduk
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
@@ -80,4 +82,10 @@ class ApiHelper(val apiService: ApiService) {
     suspend fun getSellerProduct() = apiService.getSellerProduct()
 
     suspend fun getSellerOrder() = apiService.getSellerOrder()
+
+    suspend fun updateStatusProduk(token: String,produkId: Int, requestUpdateStatusProduk: RequestUpdateStatusProduk) = apiService.updateStatusProduk(token, produkId, requestUpdateStatusProduk)
+
+    suspend fun approveOrder(token: String, id: Int, requestApproveOrder: RequestApproveOrder) = apiService.approveOrder(token, id, requestApproveOrder)
+
+    suspend fun getSellerOrderById(token: String,orderId: Int) = apiService.getSellerOrderById(token,orderId)
 }

@@ -17,16 +17,11 @@ import com.binar.secondhand.databinding.FragmentHomeBinding
 import com.binar.secondhand.data.api.model.seller.banner.get.GetBannerResponse
 import com.binar.secondhand.data.resource.Status
 import com.binar.secondhand.ui.base.BaseFragment
-import com.binar.secondhand.ui.home.HomeBannerAdapter
-import com.binar.secondhand.ui.home.HomeProductAdapter
-import com.binar.secondhand.ui.home.HomeViewModel
-import com.binar.secondhand.ui.home.UiModel
 import com.binar.secondhand.ui.main.MainFragment
 import com.bumptech.glide.Glide
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.getKoin

@@ -55,13 +55,9 @@ class SoldProductFragment :
     }
 
     private fun showProduct(dataProduct: GetSellerProductResponse?) {
-        val filteredData = dataProduct?.filter { it.status == "sold" }
+        val filteredData = dataProduct?.filter { it.status == "seller" }
         val adapter = SoldProductAdapter { data ->
-
-//            val action =
-//                MainFragmentDirections.actionMainFragmentToDetailProductFragment(data.id)
-//            findNavController().navigate(action)
-
+            showSnackbar("Produk Sudah Terjual")
         }
         if (dataProduct != null) {
             adapter.submitList(filteredData)

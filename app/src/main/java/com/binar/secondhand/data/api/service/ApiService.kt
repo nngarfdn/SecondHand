@@ -17,7 +17,8 @@ import com.binar.secondhand.data.api.model.seller.banner.get.GetBannerResponse
 import com.binar.secondhand.data.api.model.seller.category.get.GetCategoryResponse
 import com.binar.secondhand.data.api.model.buyer.productid.GetProductIdResponse
 import com.binar.secondhand.data.api.model.buyer.productid.UserProduct
-import com.binar.secondhand.data.api.model.seller.product.get.GetSellerProductResponse
+import com.binar.secondhand.data.api.model.seller.order.ResponseSellerOrderById
+import com.binar.secondhand.data.api.model.seller.product.get.*
 import com.binar.secondhand.data.api.model.seller.product.post.PostProductResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -108,4 +109,25 @@ interface ApiService {
 
     @GET("seller/order")
     suspend fun getSellerOrder(): Response<com.binar.secondhand.data.api.model.seller.order.GetOrderResponse>
+
+    @GET("seller/order/{id}")
+    suspend fun getSellerOrderById(
+        @Header("access_token") token: String,
+        @Path("id") orderId: Int
+    ): ResponseSellerOrderById
+
+    @PATCH("seller/order/{id}")
+    suspend fun approveOrder(
+        @Header("access_token") token: String,
+        @Path("id") orderId: Int,
+        @Body requestApproveOrder: RequestApproveOrder
+    ): ResponseApproveOrder
+
+    @PATCH("seller/product/{id}")
+    suspend fun updateStatusProduk(
+        @Header("access_token") token: String,
+        @Path("id") id: Int,
+        @Body requestUpdateStatusProduk: RequestUpdateStatusProduk
+    ): Response<ResponseUpdateStatusProduk>
+
 }
